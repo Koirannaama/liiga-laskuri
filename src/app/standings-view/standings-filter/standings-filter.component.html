@@ -1,0 +1,21 @@
+<ng-container *ngIf="filterState">
+    <div class="filter-container">
+        <label class="filter-label">Kausi</label>
+        <mat-form-field class="dropdown">
+            <mat-select [value]="filterState.season" (valueChange)="selectSeason($event)">
+                <mat-option *ngFor="let element of seasonOptions | keyvalue" [value]="element.key">
+                    {{ element.value }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="filter-container">
+        <label class="filter-label">Tilanne päivänä</label>
+        <mat-form-field appearance="fill" class="datepicker">
+            <input matInput [matDatepicker]="picker" [value]="filterState.end"
+                [min]="filterState.start" [max]="filterState.end" (dateChange)="selectCutOffDate($event.value)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker [startAt]="filterState.cutOff"></mat-datepicker>
+        </mat-form-field>
+    </div>
+</ng-container>

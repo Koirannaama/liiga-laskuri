@@ -1,0 +1,1 @@
+export type Season = '2021' | '2020';
