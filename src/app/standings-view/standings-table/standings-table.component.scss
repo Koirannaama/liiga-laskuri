@@ -6,4 +6,18 @@
 table {
     table-layout: fixed;
     width: 100%;
+
+    tr.mat-row, tr.mat-header-row {
+        height: 2.5rem;
+    }
+
+    tr.mat-row {
+        &:nth-child(even) {
+            background-color: rgba(82, 123, 60, 0.15);
+        }
+
+        td.mat-cell {
+            border-bottom: 1px solid #C6C6C6;
+        }
+    }
 }

@@ -4,10 +4,13 @@
         width: 10rem;
     
         .mat-form-field-flex {
-            background: #5849E6;
+            height: 2rem;
+            background: #527B3C;
             padding: 0;
             align-items: center;
-            border-radius: 0;
+            border-radius: 2px;
+            font-weight: 500;
+            font-size: 0.875rem;
     
             .mat-form-field-infix {
                 border: none;
@@ -39,7 +42,6 @@
     @include form-field();
     .mat-form-field-wrapper {    
         .mat-form-field-flex {
-            height: 2.5rem;
             padding: 0 0.5rem 0 0.125rem;
         }
 
