@@ -11,6 +11,12 @@ table {
         height: 2.5rem;
     }
 
+    tr.mat-header-row {
+        th.mat-column-TeamName {
+            width: 6rem;
+        }
+    }
+
     tr.mat-row {
         &:nth-child(even) {
             background-color: rgba(82, 123, 60, 0.15);

@@ -100,7 +100,9 @@ export class StandingsStateService {
             standings.set(homeTeam, home).set(awayTeam, away);
         }
 
-        return Array.from(standings.values()).sort((a, b) => b.points - a.points);
+        return Array.from(standings.values())
+            .map(standing => ({ ...standing, goalDiff: standing.goalsFor - standing.goalsAllowed}))
+            .sort((a, b) => b.points - a.points);
     }
 
     private emptyStanding(teamName: string): Standing {
@@ -109,7 +111,8 @@ export class StandingsStateService {
             gamesPlayed: 0,
             points: 0,
             goalsAllowed: 0,
-            goalsFor: 0
+            goalsFor: 0,
+            goalDiff: 0
         };
     }
 

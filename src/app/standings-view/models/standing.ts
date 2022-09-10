@@ -4,4 +4,5 @@ export interface Standing {
     gamesPlayed: number;
     goalsFor: number;
     goalsAllowed: number;
+    goalDiff: number;
 }

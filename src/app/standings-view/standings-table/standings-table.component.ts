@@ -7,7 +7,8 @@ enum StandingsColumn {
     GamesPlayed = 'GamesPlayed',
     Points = 'Points',
     GoalsFor = 'GoalsFor',
-    GoalsAllowed = 'GoalsAllowed'
+    GoalsAllowed = 'GoalsAllowed',
+    GoalDifferential = 'GoalDifferential'
 }
 
 @Component({
@@ -27,8 +28,8 @@ export class StandingsTableComponent {
         StandingsColumn.GamesPlayed,
         StandingsColumn.Points,
         StandingsColumn.GoalsFor,
-        StandingsColumn.GoalsAllowed
-        
+        StandingsColumn.GoalsAllowed,
+        StandingsColumn.GoalDifferential
     ] as const;
     public readonly dataSource = new MatTableDataSource<Standing>([]);
 
