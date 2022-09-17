@@ -15,7 +15,8 @@ export class StandingsFilterComponent {
 
     public readonly seasonOptions: { [season in Season]: string } = {
         '2020': '2020 - 2021',
-        '2021': '2021 - 2022'
+        '2021': '2021 - 2022',
+        '2022': '2022 - 2023'
     };
 
     public selectCutOffDate(date: Date | null): void {
@@ -24,7 +25,7 @@ export class StandingsFilterComponent {
         }
     }
 
-    public selectSeason(season: Season): void {console.log(season);
+    public selectSeason(season: Season): void {
         this.seasonSelect.emit(season);
     }
 }

@@ -14,7 +14,7 @@ export class StandingsStateService {
     public readonly state: Observable<StandingsState>;
 
     private readonly _cutoffDate = new Subject<Date>();
-    private readonly _season = new BehaviorSubject<Season>('2021');
+    private readonly _season = new BehaviorSubject<Season>('2022');
 
     constructor(private _liigaData: LiigaGatewayService) {
         const schedule = this._season.pipe(
