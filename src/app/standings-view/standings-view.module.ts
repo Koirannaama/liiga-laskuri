@@ -10,6 +10,7 @@ import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } f
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FinDateAdapter } from '../util/fin-date-adapter';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { FinDateAdapter } from '../util/fin-date-adapter';
         MatFormFieldModule,
         MatNativeDateModule,
         MatInputModule,
-        MatSelectModule
+        MatSelectModule,
+        MatSortModule
     ],
     providers: [
         { provide: DateAdapter, useClass: FinDateAdapter },

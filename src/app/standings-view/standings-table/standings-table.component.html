@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource">
+<table mat-table [dataSource]="dataSource" matSort [matSortActive]="StandingsColumn.Points" matSortDirection="desc">
 
     <ng-container [matColumnDef]="StandingsColumn.TeamName">
         <th mat-header-cell *matHeaderCellDef></th>
@@ -11,22 +11,22 @@
     </ng-container>
 
     <ng-container [matColumnDef]="StandingsColumn.Points">
-        <th mat-header-cell *matHeaderCellDef>Pisteet</th>
+        <th mat-header-cell mat-sort-header start="desc" *matHeaderCellDef>Pisteet</th>
         <td mat-cell *matCellDef="let standing">{{ standing.points }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="StandingsColumn.GoalsFor">
-        <th mat-header-cell *matHeaderCellDef>TM</th>
+        <th mat-header-cell mat-sort-header start="desc" *matHeaderCellDef>TM</th>
         <td mat-cell *matCellDef="let standing">{{ standing.goalsFor }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="StandingsColumn.GoalsAllowed">
-        <th mat-header-cell *matHeaderCellDef>PM</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header start="desc">PM</th>
         <td mat-cell *matCellDef="let standing">{{ standing.goalsAllowed }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="StandingsColumn.GoalDifferential">
-        <th mat-header-cell *matHeaderCellDef>ME</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header start="desc">ME</th>
         <td mat-cell *matCellDef="let standing">{{ standing.goalDiff }}</td>
     </ng-container>
 
