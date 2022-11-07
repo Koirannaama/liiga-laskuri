@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Season } from 'src/app/data-access/models/season';
 import { StandingsStateService } from '../services/standings-state.service';
 
 @Component({
     selector: 'app-standings-view',
     templateUrl: './standings-view.component.html',
-    styleUrls: ['./standings-view.component.scss']
+    styleUrls: ['./standings-view.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StandingsViewComponent {
 

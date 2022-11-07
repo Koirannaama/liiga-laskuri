@@ -1,10 +1,26 @@
 :host {
+    position: relative;
     display: block;
+    background-color: white;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    min-height: 10rem;
+}
+
+app-standings-filter {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 app-standings-filter, app-standings-table {
-    width: 100%;
-    margin-bottom: 1rem;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     padding: 1rem;
+}
+
+.spinner-container {
+    position: absolute;
+    width: 100%;
+    top: 2rem;
+    background-color: rgba(255, 255, 255, 0.4);
+    
+    mat-spinner {
+        margin: auto;
+    }
 }

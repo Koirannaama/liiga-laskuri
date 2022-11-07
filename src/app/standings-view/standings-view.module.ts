@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FinDateAdapter } from '../util/fin-date-adapter';
 import { MatSortModule } from '@angular/material/sort';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { MatSortModule } from '@angular/material/sort';
         MatNativeDateModule,
         MatInputModule,
         MatSelectModule,
-        MatSortModule
+        MatSortModule,
+        MatProgressSpinnerModule
     ],
     providers: [
         { provide: DateAdapter, useClass: FinDateAdapter },

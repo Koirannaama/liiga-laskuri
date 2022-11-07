@@ -12,6 +12,7 @@ import { Season } from 'src/app/data-access/models/season';
 export class StandingsStateService {
 
     public readonly state: Observable<StandingsState>;
+    public readonly isLoading: Observable<boolean>;
 
     private readonly _cutoffDate = new Subject<Date>();
     private readonly _season = new BehaviorSubject<Season>('2022');
@@ -30,6 +31,7 @@ export class StandingsStateService {
         const standings = filteredSchedule.pipe(
             map(([fixtures, cutOff]) => this.buildStandings(fixtures, cutOff))
         );
+
         this.state = combineLatest([standings, scheduleRange, cutOff, this._season]).pipe(
             map(([standings, dates, cutOff, season]) => ({
                 standings,
@@ -40,6 +42,10 @@ export class StandingsStateService {
                     season
                 }
             }))
+        );
+        this.isLoading = merge(
+            this._season.pipe(map(() => true)),
+            schedule.pipe(map(() => false)),
         );
     }
 

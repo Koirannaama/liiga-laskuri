@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Standing } from '../models/standing';
@@ -15,7 +15,8 @@ enum StandingsColumn {
 @Component({
     selector: 'app-standings-table',
     templateUrl: './standings-table.component.html',
-    styleUrls: ['./standings-table.component.scss']
+    styleUrls: ['./standings-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StandingsTableComponent implements AfterViewInit {
     @ViewChild(MatSort) public sort?: MatSort;

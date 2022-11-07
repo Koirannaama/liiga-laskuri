@@ -2,3 +2,8 @@
     <app-standings-filter [filterState]="state.filter" (cutOffDateSelect)="filterByDate($event)" (seasonSelect)="changeSeason($event)"></app-standings-filter>
     <app-standings-table [standings]="state.standings"></app-standings-table>
 </ng-container>
+
+
+<div *ngIf="standingsState.isLoading | async" class="spinner-container">
+    <mat-spinner></mat-spinner>
+</div>
