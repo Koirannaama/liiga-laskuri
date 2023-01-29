@@ -12,12 +12,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { FinDateAdapter } from '../util/fin-date-adapter';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
+import { NgChartsModule } from 'ng2-charts';
+import { StandingsChartComponent } from './standings-chart/standings-chart.component';
 
 @NgModule({
     declarations: [
         StandingsViewComponent,
         StandingsTableComponent,
-        StandingsFilterComponent
+        StandingsFilterComponent,
+        StandingsChartComponent
     ],
     imports: [
         CommonModule,
@@ -28,7 +31,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatInputModule,
         MatSelectModule,
         MatSortModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        NgChartsModule
     ],
     providers: [
         { provide: DateAdapter, useClass: FinDateAdapter },
