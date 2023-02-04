@@ -9,6 +9,9 @@ export interface FixtureDTO {
     away_goals: number;
     home_team_abbreviation: string;
     away_team_abbreviation: string;
+    /**
+     * ISO-formatted date string
+     */
     scheduled_start_time: string;
     finished_type: FinishedType;
     finished: boolean;

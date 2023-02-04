@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, map, merge, Observable, shareReplay, Subject, switchMap } from 'rxjs';
+import { BehaviorSubject, combineLatest, delay, map, merge, Observable, shareReplay, Subject, switchMap } from 'rxjs';
 import { FixtureDTO } from 'src/app/data-access/models/fixture-dto';
 import { LiigaGatewayService } from 'src/app/data-access/liiga-gateway.service';
 import { StandingsState } from '../models/standings-state';
@@ -20,6 +20,7 @@ export class StandingsStateService {
     constructor(private _liigaData: LiigaGatewayService) {
         const schedule = this._season.pipe(
             switchMap(season => this._liigaData.fetchSchedule(season)),
+            delay(5000),
             shareReplay(1)
         );
         const scheduleRange = schedule.pipe(map(fixtures => this.getScheduleRange(fixtures)), shareReplay(1));

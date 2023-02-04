@@ -1,6 +1,5 @@
 :host {
     display: block;
-    background: white;
 }
 
 table {
@@ -24,6 +23,10 @@ table {
 
         td.mat-cell {
             border-bottom: 1px solid #C6C6C6;
+        }
+
+        td.mat-column-TeamName {
+            font-weight: 500;
         }
     }
 }
