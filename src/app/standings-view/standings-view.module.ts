@@ -14,6 +14,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
 import { NgChartsModule } from 'ng2-charts';
 import { StandingsChartComponent } from './standings-chart/standings-chart.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { StandingsChartComponent } from './standings-chart/standings-chart.compo
         MatSelectModule,
         MatSortModule,
         MatProgressSpinnerModule,
-        NgChartsModule
+        NgChartsModule,
+        MatButtonToggleModule
     ],
     providers: [
         { provide: DateAdapter, useClass: FinDateAdapter },

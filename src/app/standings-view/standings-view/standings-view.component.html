@@ -1,9 +1,19 @@
 <ng-container *ngIf="standingsState.state | async as state">
     <div class="sidebar">
-        <app-standings-filter [filterState]="state.filter" (cutOffDateSelect)="filterByDate($event)" (seasonSelect)="changeSeason($event)"></app-standings-filter>
+        <app-standings-filter
+            [filterState]="state.filter"
+            (cutOffDateSelect)="filterByDate($event)"
+            (seasonSelect)="changeSeason($event)">
+        </app-standings-filter>
+
+        <mat-button-toggle-group class="toggle-button-group" [(value)]="mode">
+            <mat-button-toggle value="table">Taulukko</mat-button-toggle>
+            <mat-button-toggle value="graph">Kuvaaja</mat-button-toggle>
+        </mat-button-toggle-group>
     </div>
     <div class="content">
-        <app-standings-table [standings]="state.standings"></app-standings-table>
+        <app-standings-table *ngIf="mode === 'table'" [standings]="state.standings"></app-standings-table>
+        <app-standings-chart *ngIf="mode === 'graph'" [dailyStandings]="state.dailyStandings"></app-standings-chart>
     </div>
 </ng-container>
 

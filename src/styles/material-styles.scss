@@ -1,14 +1,17 @@
+@import './colors.scss';
+
 @mixin form-field {
     .mat-form-field-wrapper {
         padding: 0;
         width: 10rem;
+        color: black;
     
         .mat-form-field-flex {
             height: 2rem;
-            background: #527B3C;
+            background: $LIGHT_GREY;
             padding: 0;
             align-items: center;
-            border-radius: 2px;
+            border-radius: 0;
             font-weight: 500;
             font-size: 0.875rem;
     
@@ -27,15 +30,6 @@
 
 .datepicker {
     @include form-field();
-    .mat-form-field-wrapper {    
-        .mat-datepicker-input {
-            color: white;
-        }
-    
-        .mat-datepicker-toggle {
-            color: white;
-        }
-    }
 }
 
 .dropdown {
@@ -44,9 +38,25 @@
         .mat-form-field-flex {
             padding: 0 0.5rem 0 0.125rem;
         }
+    }
+}
 
-        .mat-select-value-text, .mat-select-arrow {
-            color: white;
+.toggle-button-group {
+    &.mat-button-toggle-group {
+        border: none;
+        border-radius: 0;
+        height: 2rem;
+        font-size: 0.875rem;
+    
+        .mat-button-toggle {
+            &.mat-button-toggle-checked {
+                background-color: $DEEP_BLUE;
+                color: white;
+            }
+
+            .mat-button-toggle-label-content {
+                line-height: 2rem;
+            }
         }
     }
 }

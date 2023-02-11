@@ -10,6 +10,8 @@ import { StandingsStateService } from '../services/standings-state.service';
 })
 export class StandingsViewComponent {
 
+    public mode: 'table' | 'graph' = 'table';
+
     constructor(public readonly standingsState: StandingsStateService) { }
 
     public filterByDate(cutOffDate: Date): void {

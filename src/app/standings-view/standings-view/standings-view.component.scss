@@ -1,21 +1,26 @@
+@import '../../../styles/colors.scss';
+
 :host {
     position: relative;
     display: flex;
     height: 100%;
 
-    * {
-        padding-block: 2rem;
+    > * {
+        padding: 2rem;
     }
 
     .content {
-        background-color: #BABAC3;
-        padding-inline: 2rem;
+        background-color: rgba($LIGHT_BLUEISH_GREY, 0.9);
         flex: 1;
     }
 
     .sidebar {
-        background-color: #232226;
+        background-color: $DARK_GREY;
         flex: 0 0 15rem;
+
+        mat-button-toggle-group {
+            margin-top: 2rem;
+        }
     }
 }
 
