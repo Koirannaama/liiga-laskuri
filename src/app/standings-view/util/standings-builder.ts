@@ -31,26 +31,33 @@ export class StandingsBuilder {
 
             if (fixture.finished && !this.isFixtureAfter(fixture, cutOff)) {
                 const points = this.getPoints(fixture);
-                home = { ...home,
-                    gamesPlayed: home.gamesPlayed + 1,
-                    points: home.points + points[ homeTeam ],
-                    goalsFor: home.goalsFor + fixture.home_goals,
-                    goalsAllowed: home.goalsAllowed + fixture.away_goals,
-                    date
-                };
-                away = { ...away,
-                    gamesPlayed: away.gamesPlayed + 1,
-                    points: away.points + points[ awayTeam ],
-                    goalsFor: away.goalsFor + fixture.away_goals,
-                    goalsAllowed: away.goalsAllowed + fixture.home_goals,
-                    date
-                };
+                home = this.updateStanding(home, points[ homeTeam ], fixture.home_goals, fixture.away_goals, date);
+                away = this.updateStanding(away, points[ awayTeam ], fixture.away_goals, fixture.home_goals, date);
                 standings.set(homeTeam, homeStandings.concat(home)).set(awayTeam, awayStandings.concat(away));
             }
 
         }
 
         return standings;
+    }
+
+    private updateStanding(
+        standing: DailyStanding,
+        points: number,
+        goalsFor: number,
+        goalsAgainst: number,
+        date: DateTime
+    ): DailyStanding {
+        const totalGoalsFor = standing.goalsFor + goalsFor;
+        const totalGoalsAgainst = standing.goalsAllowed + goalsAgainst;
+        return { ...standing,
+            gamesPlayed: standing.gamesPlayed + 1,
+            points: standing.points + points,
+            goalsFor: totalGoalsFor,
+            goalsAllowed: totalGoalsAgainst,
+            goalDiff: totalGoalsFor - totalGoalsAgainst,
+            date
+        };
     }
 
     private emptyStanding(teamName: string, startDate: DateTime): DailyStanding {

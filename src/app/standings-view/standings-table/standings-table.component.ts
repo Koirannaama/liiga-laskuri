@@ -36,14 +36,11 @@ export class StandingsTableComponent implements AfterViewInit {
     ] as const;
     public readonly dataSource = new MatTableDataSource<Standing>([]);
 
-    public readonly test = [
-        'test1', 'test2', 'test3'
-    ] as const;
-
     public ngAfterViewInit(): void {
         if (this.sort) {
             this.dataSource.sort = this.sort;
             this.dataSource.sortData = (rows, sort) => this.sortStandings(rows, sort);
+            this.sort.sort({ id: StandingsColumn.Points, start: 'desc', disableClear: false });
         }
     }
 
