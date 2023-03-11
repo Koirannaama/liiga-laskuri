@@ -10,16 +10,17 @@
     }
 
     .content {
-        background-color: rgba($LIGHT_BLUEISH_GREY, 0.9);
+        background-color: rgba($BG_GREY, 0.9);
         flex: 1;
     }
 
     .sidebar {
         background-color: $DARK_GREY;
-        flex: 0 0 15rem;
+        flex: 0 0 13rem;
 
         mat-button-toggle-group {
-            margin-top: 2rem;
+            margin-top: 3rem;
+            width: 100%;
         }
     }
 }

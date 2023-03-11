@@ -1,5 +1,8 @@
+@import '../../../styles/colors.scss';
+
 :host {
     display: block;
+    box-shadow: 0px 0px 8px rgba(black, 0.35);
 }
 
 table {
@@ -11,22 +14,32 @@ table {
     }
 
     tr.mat-header-row {
+        background-color: rgba($BLUE, 0.75);
+        
+
+        th.mat-header-cell {
+            color: white;
+            font-weight: 600;
+        }
+
         th.mat-column-TeamName {
             width: 6rem;
         }
     }
 
     tr.mat-row {
-        &:nth-child(even) {
-            background-color: rgba(82, 123, 60, 0.15);
-        }
+        background-color: $ROW_GREY;
 
         td.mat-cell {
-            border-bottom: 1px solid #C6C6C6;
+            border-bottom: 1px solid rgba(black, 0.2);
         }
 
         td.mat-column-TeamName {
-            font-weight: 500;
+            font-weight: 700;
         }
+    }
+
+    .mat-sort-header-arrow {
+        color: white;
     }
 }

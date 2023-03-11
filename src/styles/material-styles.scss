@@ -3,13 +3,14 @@
 @mixin form-field {
     .mat-form-field-wrapper {
         padding: 0;
-        width: 10rem;
         color: black;
+        border-bottom: solid 4px $ACCENT_GREY;
     
         .mat-form-field-flex {
-            height: 2rem;
+            height: 2.5rem;
             background: $LIGHT_GREY;
             padding: 0;
+            padding-right: 0.5rem;
             align-items: center;
             border-radius: 0;
             font-weight: 500;
@@ -36,7 +37,7 @@
     @include form-field();
     .mat-form-field-wrapper {    
         .mat-form-field-flex {
-            padding: 0 0.5rem 0 0.125rem;
+            padding-inline: 0.125rem 0.75rem;
         }
     }
 }
@@ -45,18 +46,29 @@
     &.mat-button-toggle-group {
         border: none;
         border-radius: 0;
-        height: 2rem;
+        height: 2.5rem;
         font-size: 0.875rem;
+        gap: 2px;
     
         .mat-button-toggle {
+            flex: auto;
+            font-weight: 700;
+            border: none;
+            border-bottom: solid 4px $ACCENT_GREY;
+
             &.mat-button-toggle-checked {
-                background-color: $DEEP_BLUE;
+                background-color: $BLUE;
                 color: white;
+                border-bottom: solid 4px rgba( $DEEP_BLUE, 0.5 );
             }
 
             .mat-button-toggle-label-content {
-                line-height: 2rem;
+                line-height: 2.5rem;
             }
         }
     }
+}
+
+.mat-sort-header-arrow {
+    color: white;
 }

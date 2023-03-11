@@ -1,4 +1,9 @@
+@import '../../../styles/colors.scss';
+
 .chart {
     height: 800px;
     width: 100%;
+    background-color: $ROW_GREY;
+    box-shadow: 0px 0px 8px rgba(black, 0.35);
+    padding: 1rem;
 }
