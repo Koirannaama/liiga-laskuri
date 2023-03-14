@@ -30,7 +30,8 @@ export class StandingsChartComponent {
     }
     public lineChartData?: ChartData<'line', { x: DateTime, y: number }[]>;
     public readonly lineChartOptions: ChartOptions<'line'> = {
-        responsive: false,
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
             x: {
                 type: 'time'

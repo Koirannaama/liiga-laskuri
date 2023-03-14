@@ -1,8 +1,19 @@
 @import '../../../styles/colors.scss';
 
+:host {
+    display: block;
+    height: 100%;
+}
+
+.chart-container {
+    position: relative;
+    width: 99%;
+    min-width: 800px;
+    height: 100%;
+    max-height: 800px;
+}
+
 .chart {
-    height: 800px;
-    width: 100%;
     background-color: $ROW_GREY;
     box-shadow: 0px 0px 8px rgba(black, 0.35);
     padding: 1rem;
