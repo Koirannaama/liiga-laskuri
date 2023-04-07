@@ -13,13 +13,13 @@ export class StandingsBuilder {
         this.finalStandings = Array.from(this.dailyStandings.values())
             .map(dailyStandings => dailyStandings[dailyStandings.length - 1])
             .filter(s => !!s) as Standing[];
-
     }
 
     private buildStandings(fixtures: FixtureDTO[], cutOff: Date): Map<string, DailyStanding[]> {
         fixtures.sort((a, b) => DateTime.fromISO(a.scheduled_start_time).toMillis() - DateTime.fromISO(b.scheduled_start_time).toMillis());
-        const startDate = DateTime.fromISO(fixtures[ 0 ].scheduled_start_time).minus({ days: 1 });
+        const startDate = DateTime.fromISO(fixtures[ 0 ]?.scheduled_start_time).minus({ days: 1 });
         const standings = new Map<string, DailyStanding[]>();
+        
         for (const fixture of fixtures) {
             const homeTeam = fixture.home_team_abbreviation;
             const awayTeam = fixture.away_team_abbreviation;
