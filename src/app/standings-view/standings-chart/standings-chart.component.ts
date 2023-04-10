@@ -34,7 +34,10 @@ export class StandingsChartComponent {
         maintainAspectRatio: false,
         scales: {
             x: {
-                type: 'time'
+                type: 'time',
+                time: {
+                    tooltipFormat: 'dd.MM.yyyy'
+                }
             }
         }
     } as const;

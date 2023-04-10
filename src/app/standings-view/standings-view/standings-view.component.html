@@ -12,9 +12,15 @@
         </mat-button-toggle-group>
     </div>
     <div class="content">
-        <app-standings-table *ngIf="mode === 'table'" [standings]="state.standings"></app-standings-table>
-        <app-standings-chart *ngIf="mode === 'graph'" [dailyStandings]="state.dailyStandings"></app-standings-chart>
+        <ng-container *ngIf="standingsState.hasData | async; else noData">
+            <app-standings-table *ngIf="mode === 'table'" [standings]="state.standings"></app-standings-table>
+            <app-standings-chart *ngIf="mode === 'graph'" [dailyStandings]="state.dailyStandings"></app-standings-chart>
+        </ng-container>
     </div>
+
+    <ng-template #noData>
+        Valitulle kaudelle ei löytynyt tietoja.
+    </ng-template>
 </ng-container>
 
 <div *ngIf="standingsState.isLoading | async" class="spinner-container">

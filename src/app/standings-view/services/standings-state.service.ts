@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, map, merge, Observable, shareReplay, Subject, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, combineLatest, map, merge, Observable, of, shareReplay, Subject, switchMap } from 'rxjs';
 import { FixtureDTO } from 'src/app/data-access/models/fixture-dto';
 import { LiigaGatewayService } from 'src/app/data-access/liiga-gateway.service';
 import { StandingsState } from '../models/standings-state';
@@ -13,14 +13,15 @@ export class StandingsStateService {
 
     public readonly state: Observable<StandingsState>;
     public readonly isLoading: Observable<boolean>;
+    public readonly hasData: Observable<boolean>;
 
     private readonly _cutoffDate = new Subject<Date>();
     private readonly _season = new BehaviorSubject<Season>('2022');
 
     constructor(private _liigaData: LiigaGatewayService) {
         const schedule = this._season.pipe(
-            switchMap(season => this._liigaData.fetchSchedule(season)),
-            shareReplay(1)
+            switchMap(season => this._liigaData.fetchSchedule(season).pipe(catchError(() => of(<FixtureDTO[]>[])))),
+            shareReplay(1),
         );
         const scheduleRange = schedule.pipe(map(fixtures => this.getScheduleRange(fixtures)), shareReplay(1));
         const cutOff = merge(
@@ -49,6 +50,7 @@ export class StandingsStateService {
             this._season.pipe(map(() => true)),
             schedule.pipe(map(() => false)),
         );
+        this.hasData = schedule.pipe(map(fixtures => !!fixtures.length));
     }
 
     public updateCutOffDate(cutOff: Date): void {
