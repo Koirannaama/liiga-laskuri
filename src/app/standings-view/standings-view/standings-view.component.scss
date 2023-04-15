@@ -1,4 +1,8 @@
-@import '../../../styles/colors.scss';
+@use '@angular/material' as mat;
+@use 'sass:map';
+@import './../../../styles/theme.scss';
+
+$main-palette: map.get($colors, 'primary');
 
 :host {
     position: relative;
@@ -10,12 +14,12 @@
     }
 
     .content {
-        background-color: rgba($BG_GREY, 0.9);
+        background-color: rgba(mat.get-color-from-palette($main-palette, '700-contrast'), 0.9);
         flex: 1;
     }
 
     .sidebar {
-        background-color: $DARK_GREY;
+        background-color: mat.get-color-from-palette($main-palette, '100-contrast');
         flex: 0 0 13rem;
 
         mat-button-toggle-group {
@@ -33,7 +37,7 @@ app-standings-table {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(white, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,4 +1,8 @@
-@import '../../../styles/colors.scss';
+@use '@angular/material' as mat;
+@use 'sass:map';
+@import './../../../styles/theme.scss';
+
+$main-palette: map.get($colors, 'primary');
 
 :host {
     display: block;
@@ -14,7 +18,7 @@
 }
 
 .chart {
-    background-color: $ROW_GREY;
+    background-color: mat.get-color-from-palette($main-palette, '900-contrast');
     box-shadow: 0px 0px 8px rgba(black, 0.35);
     padding: 1rem;
 }

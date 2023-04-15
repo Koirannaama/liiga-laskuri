@@ -1,4 +1,8 @@
-@import '../../../styles/colors.scss';
+@use '@angular/material' as mat;
+@use 'sass:map';
+@import './../../../styles/theme.scss';
+
+$main-palette: map.get($colors, 'primary');
 
 :host {
     display: block;
@@ -14,7 +18,7 @@ table {
     }
 
     tr.mat-header-row {
-        background-color: rgba($BLUE, 0.75);
+        background-color: rgba(mat.get-color-from-palette($main-palette, 500), 0.75);
         
 
         th.mat-header-cell {
@@ -28,7 +32,7 @@ table {
     }
 
     tr.mat-row {
-        background-color: $ROW_GREY;
+        background-color: mat.get-color-from-palette($main-palette, '900-contrast');
 
         td.mat-cell {
             border-bottom: 1px solid rgba(black, 0.2);

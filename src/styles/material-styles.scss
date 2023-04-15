@@ -1,14 +1,18 @@
-@import './colors.scss';
+@use '@angular/material' as mat;
+@use 'sass:map';
+@import './theme.scss';
+
+$main-palette: map.get($colors, 'primary');
 
 @mixin form-field {
     .mat-form-field-wrapper {
         padding: 0;
         color: black;
-        border-bottom: solid 4px $ACCENT_GREY;
+        border-bottom: solid 4px mat.get-color-from-palette($main-palette, '400-contrast');
     
         .mat-form-field-flex {
             height: 2.5rem;
-            background: $LIGHT_GREY;
+            background: mat.get-color-from-palette($main-palette, '500-contrast');
             padding: 0;
             padding-right: 0.5rem;
             align-items: center;
@@ -53,12 +57,12 @@
             flex: auto;
             font-weight: 700;
             border: none;
-            border-bottom: solid 4px $ACCENT_GREY;
+            border-bottom: solid 4px mat.get-color-from-palette($main-palette, '400-contrast');
 
             &.mat-button-toggle-checked {
-                background-color: $BLUE;
+                background-color: mat.get-color-from-palette($main-palette, 500);
                 color: white;
-                border-bottom: solid 4px rgba( $DEEP_BLUE, 0.5 );
+                border-bottom: solid 4px rgba(mat.get-color-from-palette( $main-palette, 900 ), 0.5);
             }
 
             .mat-button-toggle-label-content {
