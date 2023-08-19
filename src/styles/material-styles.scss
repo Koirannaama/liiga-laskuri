@@ -4,32 +4,43 @@
 
 $main-palette: map.get($colors, 'primary');
 
-@mixin form-field {
-    .mat-form-field-wrapper {
+@mixin form-field() {
+    padding: 0;
+    color: black;
+    border-bottom: solid 4px mat.get-color-from-palette($main-palette, '400-contrast');
+
+    &.mat-mdc-form-field {
+        height: 2.5rem;
+        background: mat.get-color-from-palette($main-palette, '500-contrast');
         padding: 0;
-        color: black;
-        border-bottom: solid 4px mat.get-color-from-palette($main-palette, '400-contrast');
-    
-        .mat-form-field-flex {
-            height: 2.5rem;
-            background: mat.get-color-from-palette($main-palette, '500-contrast');
-            padding: 0;
-            padding-right: 0.5rem;
-            align-items: center;
-            border-radius: 0;
-            font-weight: 500;
-            font-size: 0.875rem;
-    
-            .mat-form-field-infix {
-                border: none;
-                padding: 0;
-                padding-left: 1rem;
-            }
-        }
-    
-        .mat-form-field-underline {
-            display: none;
-        }
+        align-items: center;
+        border-radius: 0;
+        font-weight: 500;
+        font-size: 0.875rem;
+    }
+
+    .mat-mdc-form-field-infix {
+        padding: 0;
+        min-height: 0;
+    }
+
+    .mat-mdc-form-field-flex {
+        align-items: center;
+        padding-left: 1rem;
+        border: none;
+        height: 100%;
+    }
+
+    .mat-mdc-text-field-wrapper {
+        padding: 0;
+    }
+
+    .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+    }
+
+    .mdc-line-ripple {
+        display: none;
     }
 }
 
@@ -39,10 +50,8 @@ $main-palette: map.get($colors, 'primary');
 
 .dropdown {
     @include form-field();
-    .mat-form-field-wrapper {    
-        .mat-form-field-flex {
-            padding-inline: 0.125rem 0.75rem;
-        }
+    .mat-mdc-form-field-flex {
+        padding-inline: 1rem;
     }
 }
 
@@ -62,7 +71,7 @@ $main-palette: map.get($colors, 'primary');
             &.mat-button-toggle-checked {
                 background-color: mat.get-color-from-palette($main-palette, 500);
                 color: white;
-                border-bottom: solid 4px rgba(mat.get-color-from-palette( $main-palette, 900 ), 0.5);
+                border-bottom: solid 4px rgba(mat.get-color-from-palette($main-palette, 900), 0.5);
             }
 
             .mat-button-toggle-label-content {
@@ -74,4 +83,15 @@ $main-palette: map.get($colors, 'primary');
 
 .mat-sort-header-arrow {
     color: white;
+}
+
+.mdc-menu-surface.mat-mdc-select-panel.mdc-menu-surface--open {
+    padding: 0;
+    border: 1px solid mat.get-color-from-palette($main-palette, '400-contrast');;
+
+    .mat-mdc-option {
+        font-size: 0.875rem;
+        background-color: mat.get-color-from-palette($main-palette, '500-contrast');
+        min-height: 2rem;
+    }
 }

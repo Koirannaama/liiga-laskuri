@@ -12,29 +12,26 @@ $main-palette: map.get($colors, 'primary');
 table {
     table-layout: fixed;
     width: 100%;
+    font-size: 0.875rem;
 
-    tr.mat-row, tr.mat-header-row {
+    tr.mat-mdc-row, tr.mat-mdc-header-row {
         height: 2.5rem;
     }
 
-    tr.mat-header-row {
+    tr.mat-mdc-header-row {
         background-color: rgba(mat.get-color-from-palette($main-palette, 500), 0.75);
         
 
-        th.mat-header-cell {
+        th.mat-mdc-header-cell {
             color: white;
             font-weight: 600;
         }
-
-        th.mat-column-TeamName {
-            width: 6rem;
-        }
     }
 
-    tr.mat-row {
+    tr.mat-mdc-row {
         background-color: mat.get-color-from-palette($main-palette, '900-contrast');
 
-        td.mat-cell {
+        td.mat-mdc-cell {
             border-bottom: 1px solid rgba(black, 0.2);
         }
 
