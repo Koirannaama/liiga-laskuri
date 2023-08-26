@@ -1,47 +1,9 @@
-import { FinishedType, FixtureDTO } from 'src/app/data-access/models/fixture-dto';
 import { Standing } from '../models/standing';
 import { StandingsBuilder } from './standings-builder';
 import { MatchSelection } from '../models/standings-filter';
+import { MOCK_FIXTURES } from '../test/fixture-dto.mock';
 
 describe('StandingsBuilder', () => {
-    const data: FixtureDTO[] = [
-        {
-            home_goals: 3,
-            away_goals: 2,
-            home_team_abbreviation: 'Murskaajat',
-            away_team_abbreviation: 'Myllyttäjät',
-            scheduled_start_time: new Date(2023, 7, 4).toISOString(),
-            finished_type: FinishedType.RegularTime,
-            finished: true
-        },
-        {
-            home_goals: 3,
-            away_goals: 5,
-            home_team_abbreviation: 'Myllyttäjät',
-            away_team_abbreviation: 'Murskaajat',
-            scheduled_start_time: new Date(2023, 7, 5).toISOString(),
-            finished_type: FinishedType.RegularTime,
-            finished: true
-        },
-        {
-            home_goals: 1,
-            away_goals: 0,
-            home_team_abbreviation: 'Vässykät',
-            away_team_abbreviation: 'Murskaajat',
-            scheduled_start_time: new Date(2023, 7, 6).toISOString(),
-            finished_type: FinishedType.OverTime,
-            finished: true
-        },
-        {
-            home_goals: 6,
-            away_goals: 0,
-            home_team_abbreviation: 'Myllyttäjät',
-            away_team_abbreviation: 'Vässykät',
-            scheduled_start_time: new Date(2023, 7, 7).toISOString(),
-            finished_type: FinishedType.RegularTime,
-            finished: true
-        }
-    ];
 
     it('should handle empty fixture list', () => {
         const builder = new StandingsBuilder([], new Date(2000, 1, 1), MatchSelection.All);
@@ -54,7 +16,7 @@ describe('StandingsBuilder', () => {
         let builder: StandingsBuilder;
         const finalStandings = (team: string): Standing | undefined => builder.finalStandings.find(s => s.teamName === team);
         beforeEach(() => {
-            builder = new StandingsBuilder(data, new Date(2023, 11, 11), MatchSelection.All);
+            builder = new StandingsBuilder(MOCK_FIXTURES, new Date(2023, 11, 11), MatchSelection.All);
         });
 
         it('for Murskaajat', () => {
