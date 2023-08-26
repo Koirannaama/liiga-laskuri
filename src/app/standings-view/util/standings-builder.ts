@@ -2,20 +2,21 @@ import { DateTime } from 'luxon';
 import { FinishedType, FixtureDTO } from 'src/app/data-access/models/fixture-dto';
 import { DailyStanding } from '../models/daily-standing';
 import { Standing } from '../models/standing';
+import { MatchSelection } from '../models/standings-filter';
 
 export class StandingsBuilder {
 
     public readonly finalStandings: Standing[];
     public readonly dailyStandings: Map<string, DailyStanding[]>;
 
-    constructor(fixtures: FixtureDTO[], cutOff: Date) {
-        this.dailyStandings = this.buildStandings(fixtures, cutOff);
+    constructor(fixtures: FixtureDTO[], cutOff: Date, matchSelection: MatchSelection) {
+        this.dailyStandings = this.buildStandings(fixtures, cutOff, matchSelection);
         this.finalStandings = Array.from(this.dailyStandings.values())
             .map(dailyStandings => dailyStandings[dailyStandings.length - 1])
             .filter(s => !!s) as Standing[];
     }
 
-    private buildStandings(fixtures: FixtureDTO[], cutOff: Date): Map<string, DailyStanding[]> {
+    private buildStandings(fixtures: FixtureDTO[], cutOff: Date, matchSelection: MatchSelection): Map<string, DailyStanding[]> {
         fixtures.sort((a, b) => DateTime.fromISO(a.scheduled_start_time).toMillis() - DateTime.fromISO(b.scheduled_start_time).toMillis());
         const startDate = DateTime.fromISO(fixtures[ 0 ]?.scheduled_start_time).minus({ days: 1 });
         const standings = new Map<string, DailyStanding[]>();
@@ -35,9 +36,12 @@ export class StandingsBuilder {
                 return teamStandings.concat(this.createStanding(currentStanding, points[ team ], teamGoals, opponentGoals, date));
             };
 
-            standings
-                .set(homeTeam, addDailyStanding(homeTeam, fixture.home_goals, fixture.away_goals))
-                .set(awayTeam, addDailyStanding(awayTeam, fixture.away_goals, fixture.home_goals));            
+            if ([MatchSelection.All, MatchSelection.Home].includes(matchSelection)) {
+                standings.set(homeTeam, addDailyStanding(homeTeam, fixture.home_goals, fixture.away_goals));
+            }
+            if ([MatchSelection.All, MatchSelection.Away].includes(matchSelection)) {
+                standings.set(awayTeam, addDailyStanding(awayTeam, fixture.away_goals, fixture.home_goals));  
+            }        
         }
 
         return standings;

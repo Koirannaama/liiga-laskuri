@@ -18,4 +18,13 @@
             <mat-datepicker #picker [startAt]="filterState.cutOff"></mat-datepicker>
         </mat-form-field>
     </div>
+
+    <div class="filter-container">
+        <label class="filter-label">Ottelut</label>
+        <mat-button-toggle-group class="toggle-button-group" [value]="filterState.matchSelection" (valueChange)="selectMatchSelection($event)">
+            <mat-button-toggle [value]="MatchSelection.All">Kaikki</mat-button-toggle>
+            <mat-button-toggle [value]="MatchSelection.Home">Koti</mat-button-toggle>
+            <mat-button-toggle [value]="MatchSelection.Away">Vieras</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
 </ng-container>

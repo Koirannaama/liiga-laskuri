@@ -19,7 +19,7 @@ $main-palette: map.get($colors, 'primary');
     }
 
     .sidebar {
-        background-color: mat.get-color-from-palette($main-palette, '100-contrast');
+        background: linear-gradient(180deg, #373146 0%, mat.get-color-from-palette($main-palette, '100-contrast') 50%);
         flex: 0 0 13rem;
 
         mat-button-toggle-group {

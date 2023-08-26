@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Season } from 'src/app/data-access/models/season';
 import { StandingsStateService } from '../services/standings-state.service';
+import { MatchSelection } from '../models/standings-filter';
 
 @Component({
     selector: 'app-standings-view',
@@ -20,5 +21,9 @@ export class StandingsViewComponent {
 
     public changeSeason(season: Season): void {
         this.standingsState.updateSeason(season);
+    }
+
+    public changeMatchSelection(selection: MatchSelection): void {
+        this.standingsState.updateMatchSelection(selection);
     }
 }

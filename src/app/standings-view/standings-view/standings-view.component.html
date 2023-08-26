@@ -3,7 +3,8 @@
         <app-standings-filter
             [filterState]="state.filter"
             (cutOffDateSelect)="filterByDate($event)"
-            (seasonSelect)="changeSeason($event)">
+            (seasonSelect)="changeSeason($event)"
+            (matchSelectionSelect)="changeMatchSelection($event)">
         </app-standings-filter>
 
         <mat-button-toggle-group class="toggle-button-group" [(value)]="mode">

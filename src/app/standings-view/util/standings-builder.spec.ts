@@ -1,6 +1,7 @@
 import { FinishedType, FixtureDTO } from 'src/app/data-access/models/fixture-dto';
 import { Standing } from '../models/standing';
 import { StandingsBuilder } from './standings-builder';
+import { MatchSelection } from '../models/standings-filter';
 
 describe('StandingsBuilder', () => {
     const data: FixtureDTO[] = [
@@ -43,7 +44,7 @@ describe('StandingsBuilder', () => {
     ];
 
     it('should handle empty fixture list', () => {
-        const builder = new StandingsBuilder([], new Date(2000, 1, 1));
+        const builder = new StandingsBuilder([], new Date(2000, 1, 1), MatchSelection.All);
 
         expect(builder.finalStandings.length).toBe(0);
         expect(builder.dailyStandings.size).toBe(0);
@@ -51,9 +52,9 @@ describe('StandingsBuilder', () => {
 
     describe('should calculate final standings', () => {
         let builder: StandingsBuilder;
-        let finalStandings = (team: string): Standing | undefined => builder.finalStandings.find(s => s.teamName === team);
+        const finalStandings = (team: string): Standing | undefined => builder.finalStandings.find(s => s.teamName === team);
         beforeEach(() => {
-            builder = new StandingsBuilder(data, new Date(2023, 11, 11));
+            builder = new StandingsBuilder(data, new Date(2023, 11, 11), MatchSelection.All);
         });
 
         it('for Murskaajat', () => {

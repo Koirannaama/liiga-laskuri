@@ -5,6 +5,7 @@ import { LiigaGatewayService } from 'src/app/data-access/liiga-gateway.service';
 import { StandingsState } from '../models/standings-state';
 import { Season } from 'src/app/data-access/models/season';
 import { StandingsBuilder } from '../util/standings-builder';
+import { MatchSelection } from '../models/standings-filter';
 
 @Injectable({
     providedIn: 'root'
@@ -17,6 +18,7 @@ export class StandingsStateService {
 
     private readonly _cutoffDate = new Subject<Date>();
     private readonly _season = new BehaviorSubject<Season>('2022');
+    private readonly _matchSelection = new BehaviorSubject<MatchSelection>(MatchSelection.All);
 
     constructor(private _liigaData: LiigaGatewayService) {
         const schedule = this._season.pipe(
@@ -28,21 +30,22 @@ export class StandingsStateService {
             this._cutoffDate,
             scheduleRange.pipe(map(range => range.end))
         );
-        const filteredSchedule = combineLatest([schedule, cutOff]).pipe(shareReplay(1));
+        const filteredSchedule = combineLatest([schedule, cutOff, this._matchSelection]).pipe(shareReplay(1));
         const builder = filteredSchedule.pipe(
-            map(([fixtures, cutOff]) => new StandingsBuilder(fixtures, cutOff)),
+            map(([fixtures, cutOff, matchSelection]) => new StandingsBuilder(fixtures, cutOff, matchSelection)),
             shareReplay(1)
         );
 
-        this.state = combineLatest([builder, scheduleRange, cutOff, this._season]).pipe(
-            map(([builder, dates, cutOff, season]) => ({
+        this.state = combineLatest([builder, scheduleRange, cutOff, this._season, this._matchSelection]).pipe(
+            map(([builder, dates, cutOff, season, matchSelection]) => ({
                 standings: builder.finalStandings,
                 dailyStandings: builder.dailyStandings, 
                 filter: {
                     start: dates.start,
                     end: dates.end,
                     cutOff,
-                    season
+                    season,
+                    matchSelection
                 }
             }))
         );
@@ -59,6 +62,10 @@ export class StandingsStateService {
 
     public updateSeason(season: Season): void {
         this._season.next(season);
+    }
+
+    public updateMatchSelection(selection: MatchSelection): void {
+        this._matchSelection.next(selection);
     }
 
     private getScheduleRange(fixtures: FixtureDTO[]): { start: Date, end: Date } {
