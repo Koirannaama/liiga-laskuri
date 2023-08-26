@@ -21,38 +21,40 @@ export class StandingsBuilder {
         const standings = new Map<string, DailyStanding[]>();
         
         for (const fixture of fixtures) {
-            const homeTeam = fixture.home_team_abbreviation;
-            const awayTeam = fixture.away_team_abbreviation;
-            const date = DateTime.fromISO(fixture.scheduled_start_time);
-            const homeStandings = standings.get(homeTeam) ?? [this.emptyStanding(homeTeam, startDate)];
-            const awayStandings = standings.get(awayTeam) ?? [this.emptyStanding(awayTeam, startDate)];
-            let home = homeStandings[homeStandings.length - 1];
-            let away = awayStandings[awayStandings.length - 1];
-
-            if (fixture.finished && !this.isFixtureAfter(fixture, cutOff)) {
-                const points = this.getPoints(fixture);
-                home = this.updateStanding(home, points[ homeTeam ], fixture.home_goals, fixture.away_goals, date);
-                away = this.updateStanding(away, points[ awayTeam ], fixture.away_goals, fixture.home_goals, date);
-                standings.set(homeTeam, homeStandings.concat(home)).set(awayTeam, awayStandings.concat(away));
+            if (!fixture.finished || this.isFixtureAfter(fixture, cutOff)) {
+                continue;
             }
 
+            const date = DateTime.fromISO(fixture.scheduled_start_time);
+            const points = this.getPoints(fixture);
+            const homeTeam = fixture.home_team_abbreviation;
+            const awayTeam = fixture.away_team_abbreviation;
+            const addDailyStanding = (team: string, teamGoals: number, opponentGoals: number): DailyStanding[] => {
+                const teamStandings = standings.get(team) ?? [this.emptyStanding(team, startDate)];
+                const currentStanding = teamStandings[teamStandings.length - 1];
+                return teamStandings.concat(this.createStanding(currentStanding, points[ team ], teamGoals, opponentGoals, date));
+            };
+
+            standings
+                .set(homeTeam, addDailyStanding(homeTeam, fixture.home_goals, fixture.away_goals))
+                .set(awayTeam, addDailyStanding(awayTeam, fixture.away_goals, fixture.home_goals));            
         }
 
         return standings;
     }
 
-    private updateStanding(
-        standing: DailyStanding,
+    private createStanding(
+        previousStanding: DailyStanding,
         points: number,
         goalsFor: number,
         goalsAgainst: number,
         date: DateTime
     ): DailyStanding {
-        const totalGoalsFor = standing.goalsFor + goalsFor;
-        const totalGoalsAgainst = standing.goalsAllowed + goalsAgainst;
-        return { ...standing,
-            gamesPlayed: standing.gamesPlayed + 1,
-            points: standing.points + points,
+        const totalGoalsFor = previousStanding.goalsFor + goalsFor;
+        const totalGoalsAgainst = previousStanding.goalsAllowed + goalsAgainst;
+        return { ...previousStanding,
+            gamesPlayed: previousStanding.gamesPlayed + 1,
+            points: previousStanding.points + points,
             goalsFor: totalGoalsFor,
             goalsAllowed: totalGoalsAgainst,
             goalDiff: totalGoalsFor - totalGoalsAgainst,
