@@ -80,7 +80,11 @@
                 "eqeqeq": [
                     "error",
                     "smart"
-                ]
+                ],
+                "prefer-const": ["error", {
+                    "destructuring": "all",
+                    "ignoreReadBeforeAssign": false
+                }]
             }
         },
         {
