@@ -5,4 +5,5 @@ export interface Standing {
     goalsFor: number;
     goalsAllowed: number;
     goalDiff: number;
+    pointsPerGame: number;
 }

@@ -9,7 +9,8 @@ enum StandingsColumn {
     Points = 'Points',
     GoalsFor = 'GoalsFor',
     GoalsAllowed = 'GoalsAllowed',
-    GoalDifferential = 'GoalDifferential'
+    GoalDifferential = 'GoalDifferential',
+    PointsPerGame = 'PointsPerGame'
 }
 
 @Component({
@@ -32,7 +33,8 @@ export class StandingsTableComponent implements AfterViewInit {
         StandingsColumn.Points,
         StandingsColumn.GoalsFor,
         StandingsColumn.GoalsAllowed,
-        StandingsColumn.GoalDifferential
+        StandingsColumn.GoalDifferential,
+        StandingsColumn.PointsPerGame,
     ] as const;
     public readonly dataSource = new MatTableDataSource<Standing>([]);
 
@@ -53,7 +55,8 @@ export class StandingsTableComponent implements AfterViewInit {
             [StandingsColumn.Points]: row => row.points,
             [StandingsColumn.GoalsFor]: row => row.goalsFor,
             [StandingsColumn.GoalsAllowed]: row => row.goalsAllowed,
-            [StandingsColumn.GoalDifferential]: row => row.goalDiff
+            [StandingsColumn.GoalDifferential]: row => row.goalDiff,
+            [StandingsColumn.PointsPerGame]: row => row.pointsPerGame,
         };
         const accessor = accessors[ sort.active as StandingsColumn ] ?? (() => 0);
         const direction = sort.direction === 'desc' ? 1 : -1;

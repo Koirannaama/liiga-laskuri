@@ -30,6 +30,11 @@
         <td mat-cell *matCellDef="let standing">{{ standing.goalDiff }}</td>
     </ng-container>
 
+    <ng-container [matColumnDef]="StandingsColumn.PointsPerGame">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header start="desc">P/O</th>
+        <td mat-cell *matCellDef="let standing">{{ standing.pointsPerGame | number: '1.2-2' }}</td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="columns"></tr>
     <tr mat-row *matRowDef="let standing; columns: columns"></tr>
 </table>

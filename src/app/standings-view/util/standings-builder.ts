@@ -56,13 +56,16 @@ export class StandingsBuilder {
     ): DailyStanding {
         const totalGoalsFor = previousStanding.goalsFor + goalsFor;
         const totalGoalsAgainst = previousStanding.goalsAllowed + goalsAgainst;
+        const totalPoints = previousStanding.points + points;
+        const totalGamesPlayed = previousStanding.gamesPlayed + 1;
         return { ...previousStanding,
-            gamesPlayed: previousStanding.gamesPlayed + 1,
-            points: previousStanding.points + points,
+            gamesPlayed: totalGamesPlayed,
+            points: totalPoints,
             goalsFor: totalGoalsFor,
             goalsAllowed: totalGoalsAgainst,
             goalDiff: totalGoalsFor - totalGoalsAgainst,
-            date
+            date,
+            pointsPerGame: totalPoints / totalGamesPlayed
         };
     }
 
@@ -74,7 +77,8 @@ export class StandingsBuilder {
             goalsAllowed: 0,
             goalsFor: 0,
             goalDiff: 0,
-            date: startDate
+            date: startDate,
+            pointsPerGame: 0,
         };
     }
 

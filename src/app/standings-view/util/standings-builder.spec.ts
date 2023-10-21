@@ -27,26 +27,29 @@ describe('StandingsBuilder', () => {
             expect(murskaajat?.goalsFor).toBe(8);
             expect(murskaajat?.goalsAllowed).toBe(6);
             expect(murskaajat?.goalDiff).toBe(2);
+            expect(murskaajat?.pointsPerGame).toBeCloseTo(7 / 3, 3);
         });
 
         it('for Myllyttäjät', () => {
-            const murskaajat = finalStandings('Myllyttäjät');
+            const myllyttäjät = finalStandings('Myllyttäjät');
 
-            expect(murskaajat?.points).toBe(3);
-            expect(murskaajat?.gamesPlayed).toBe(3);
-            expect(murskaajat?.goalsFor).toBe(11);
-            expect(murskaajat?.goalsAllowed).toBe(8);
-            expect(murskaajat?.goalDiff).toBe(3);
+            expect(myllyttäjät?.points).toBe(3);
+            expect(myllyttäjät?.gamesPlayed).toBe(3);
+            expect(myllyttäjät?.goalsFor).toBe(11);
+            expect(myllyttäjät?.goalsAllowed).toBe(8);
+            expect(myllyttäjät?.goalDiff).toBe(3);
+            expect(myllyttäjät?.pointsPerGame).toBeCloseTo(3 / 3, 3);
         });
 
         it('for Vässykät', () => {
-            const murskaajat = finalStandings('Vässykät');
+            const vässykät = finalStandings('Vässykät');
 
-            expect(murskaajat?.points).toBe(2);
-            expect(murskaajat?.gamesPlayed).toBe(2);
-            expect(murskaajat?.goalsFor).toBe(1);
-            expect(murskaajat?.goalsAllowed).toBe(6);
-            expect(murskaajat?.goalDiff).toBe(-5);
+            expect(vässykät?.points).toBe(2);
+            expect(vässykät?.gamesPlayed).toBe(2);
+            expect(vässykät?.goalsFor).toBe(1);
+            expect(vässykät?.goalsAllowed).toBe(6);
+            expect(vässykät?.goalDiff).toBe(-5);
+            expect(vässykät?.pointsPerGame).toBeCloseTo(2 / 2, 3);
         });
     });
 });
