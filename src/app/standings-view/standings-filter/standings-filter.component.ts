@@ -17,7 +17,8 @@ export class StandingsFilterComponent {
     public readonly seasonOptions: { [season in Season]: string } = {
         '2020': '2020 - 2021',
         '2021': '2021 - 2022',
-        '2022': '2022 - 2023'
+        '2022': '2022 - 2023',
+        '2023': '2023 - 2024'
     };
 
     public MatchSelection = MatchSelection;
