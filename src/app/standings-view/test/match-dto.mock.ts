@@ -6,11 +6,13 @@ export const MOCK_MATCHES: MatchDTO[] = [
         finishedType: FinishedType.ENDED_DURING_REGULAR_GAME_TIME,
         homeTeam: {
             teamName: 'Murskaajat',
-            goals: 3
+            goals: 3,
+            expectedGoals: 0,
         },
         awayTeam: {
             teamName: 'Myllyttäjät',
             goals: 2,
+            expectedGoals: 0,
         },
         ended: true,
     },
@@ -19,11 +21,13 @@ export const MOCK_MATCHES: MatchDTO[] = [
         finishedType: FinishedType.ENDED_DURING_REGULAR_GAME_TIME,
         homeTeam: {
             teamName: 'Myllyttäjät',
-            goals: 3
+            goals: 3,
+            expectedGoals: 0,
         },
         awayTeam: {
             teamName: 'Murskaajat',
             goals: 5,
+            expectedGoals: 0,
         },
         ended: true,
     },
@@ -32,11 +36,13 @@ export const MOCK_MATCHES: MatchDTO[] = [
         finishedType: FinishedType.ENDED_DURING_EXTENDED_GAME_TIME,
         homeTeam: {
             teamName: 'Vässykät',
-            goals: 1
+            goals: 1,
+            expectedGoals: 0,
         },
         awayTeam: {
             teamName: 'Murskaajat',
             goals: 0,
+            expectedGoals: 0,
         },
         ended: true,
     },
@@ -45,11 +51,13 @@ export const MOCK_MATCHES: MatchDTO[] = [
         finishedType: FinishedType.ENDED_DURING_REGULAR_GAME_TIME,
         homeTeam: {
             teamName: 'Myllyttäjät',
-            goals: 6
+            goals: 6,
+            expectedGoals: 0,
         },
         awayTeam: {
             teamName: 'Vässykät',
             goals: 0,
+            expectedGoals: 0,
         },
         ended: true,
     },

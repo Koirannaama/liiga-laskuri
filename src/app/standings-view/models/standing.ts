@@ -6,4 +6,7 @@ export interface Standing {
     goalsAllowed: number;
     goalDiff: number;
     pointsPerGame: number;
+    xGFor: number;
+    xGAgainst: number;
+    xGDiff: number;
 }

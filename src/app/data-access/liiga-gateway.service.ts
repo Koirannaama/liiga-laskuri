@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FixtureDTO } from './models/fixture-dto';
 import { Season } from './models/season';
 import { MatchDTO } from './models/match-dto';
 

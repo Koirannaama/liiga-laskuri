@@ -3,6 +3,7 @@ import { MatchSelection } from '../models/standings-filter';
 import { DailyStanding } from '../models/daily-standing';
 import { DateTime } from 'luxon';
 import { Standing } from '../models/standing';
+import { TeamStatisticsDTO } from 'src/app/data-access/models/team-statistics-dto';
 
 export class StandingsBuilder {
     public readonly finalStandings: Standing[];
@@ -29,17 +30,17 @@ export class StandingsBuilder {
             const points = this.getPoints(match);
             const homeTeam = match.homeTeam.teamName;
             const awayTeam = match.awayTeam.teamName;
-            const addDailyStanding = (team: string, teamGoals: number, opponentGoals: number): DailyStanding[] => {
+            const addDailyStanding = (team: string, teamStats: TeamStatisticsDTO, opponentStats: TeamStatisticsDTO): DailyStanding[] => {
                 const teamStandings = standings.get(team) ?? [this.emptyStanding(team, startDate)];
                 const currentStanding = teamStandings[teamStandings.length - 1];
-                return teamStandings.concat(this.createStanding(currentStanding, points[ team ], teamGoals, opponentGoals, date));
+                return teamStandings.concat(this.createStanding(currentStanding, points[ team ], teamStats, opponentStats, date));
             };
 
             if ([MatchSelection.All, MatchSelection.Home].includes(matchSelection)) {
-                standings.set(homeTeam, addDailyStanding(homeTeam, match.homeTeam.goals, match.awayTeam.goals));
+                standings.set(homeTeam, addDailyStanding(homeTeam, match.homeTeam, match.awayTeam));
             }
             if ([MatchSelection.All, MatchSelection.Away].includes(matchSelection)) {
-                standings.set(awayTeam, addDailyStanding(awayTeam, match.awayTeam.goals, match.homeTeam.goals));  
+                standings.set(awayTeam, addDailyStanding(awayTeam, match.awayTeam, match.homeTeam));  
             }        
         }
 
@@ -49,14 +50,17 @@ export class StandingsBuilder {
     private createStanding(
         previousStanding: DailyStanding,
         points: number,
-        goalsFor: number,
-        goalsAgainst: number,
+        teamStats: TeamStatisticsDTO,
+        opponentStats: TeamStatisticsDTO,
         date: DateTime
     ): DailyStanding {
-        const totalGoalsFor = previousStanding.goalsFor + goalsFor;
-        const totalGoalsAgainst = previousStanding.goalsAllowed + goalsAgainst;
+        const totalGoalsFor = previousStanding.goalsFor + teamStats.goals;
+        const totalGoalsAgainst = previousStanding.goalsAllowed + opponentStats.goals;
         const totalPoints = previousStanding.points + points;
         const totalGamesPlayed = previousStanding.gamesPlayed + 1;
+        const xGFor = previousStanding.xGFor + teamStats.expectedGoals;
+        const xGAgainst = previousStanding.xGAgainst + opponentStats.expectedGoals;
+        const xGDiff = xGFor - xGAgainst;
         return { ...previousStanding,
             gamesPlayed: totalGamesPlayed,
             points: totalPoints,
@@ -64,7 +68,10 @@ export class StandingsBuilder {
             goalsAllowed: totalGoalsAgainst,
             goalDiff: totalGoalsFor - totalGoalsAgainst,
             date,
-            pointsPerGame: totalPoints / totalGamesPlayed
+            pointsPerGame: totalPoints / totalGamesPlayed,
+            xGFor,
+            xGAgainst,
+            xGDiff
         };
     }
 
@@ -78,6 +85,9 @@ export class StandingsBuilder {
             goalDiff: 0,
             date: startDate,
             pointsPerGame: 0,
+            xGFor: 0,
+            xGAgainst: 0,
+            xGDiff: 0,
         };
     }
 
