@@ -3,7 +3,7 @@ import { of, skip } from 'rxjs';
 import { LiigaGatewayService } from 'src/app/data-access/liiga-gateway.service';
 
 import { StandingsStateService } from './standings-state.service';
-import { MOCK_FIXTURES } from '../test/fixture-dto.mock';
+import { MOCK_MATCHES } from '../test/match-dto.mock';
 
 describe('StandingsStateService', () => {
     let service: StandingsStateService;
@@ -12,7 +12,7 @@ describe('StandingsStateService', () => {
         TestBed.configureTestingModule({
             providers: [
                 StandingsStateService,
-                { provide: LiigaGatewayService, useValue: { fetchSchedule: () => of(MOCK_FIXTURES) } }
+                { provide: LiigaGatewayService, useValue: { fetchMatches: () => of(MOCK_MATCHES) } }
             ]
         });
         service = TestBed.inject(StandingsStateService);

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, combineLatest, map, merge, Observable, of, shareReplay, Subject, switchMap } from 'rxjs';
-import { FixtureDTO } from 'src/app/data-access/models/fixture-dto';
 import { LiigaGatewayService } from 'src/app/data-access/liiga-gateway.service';
 import { StandingsState } from '../models/standings-state';
 import { Season } from 'src/app/data-access/models/season';
-import { StandingsBuilder } from '../util/standings-builder';
 import { MatchSelection } from '../models/standings-filter';
+import { StandingsBuilder } from '../util/standings-builder';
+import { MatchDTO } from 'src/app/data-access/models/match-dto';
 
 @Injectable({
     providedIn: 'root'
@@ -17,12 +17,12 @@ export class StandingsStateService {
     public readonly hasData: Observable<boolean>;
 
     private readonly _cutoffDate = new Subject<Date>();
-    private readonly _season = new BehaviorSubject<Season>('2023');
+    private readonly _season = new BehaviorSubject<Season>('2024');
     private readonly _matchSelection = new BehaviorSubject<MatchSelection>(MatchSelection.All);
 
     constructor(private _liigaData: LiigaGatewayService) {
         const schedule = this._season.pipe(
-            switchMap(season => this._liigaData.fetchSchedule(season).pipe(catchError(() => of(<FixtureDTO[]>[])))),
+            switchMap(season => this._liigaData.fetchMatches(season).pipe(catchError(() => []))),
             shareReplay(1),
         );
         const scheduleRange = schedule.pipe(map(fixtures => this.getScheduleRange(fixtures)), shareReplay(1));
@@ -68,13 +68,13 @@ export class StandingsStateService {
         this._matchSelection.next(selection);
     }
 
-    private getScheduleRange(fixtures: FixtureDTO[]): { start: Date, end: Date } {
+    private getScheduleRange(matches: MatchDTO[]): { start: Date, end: Date } {
         let start = new Date(Number.MAX_SAFE_INTEGER);
         let end = new Date(0);
 
-        for (const fixture of fixtures) {
-            if (fixture.finished) {
-                const fixtureDate = new Date(fixture.scheduled_start_time);
+        for (const match of matches) {
+            if (match.ended) {
+                const fixtureDate = new Date(match.start);
                 start = start < fixtureDate ? start : fixtureDate;
                 end = end > fixtureDate ? end : fixtureDate;
             }

@@ -1,7 +1,7 @@
 import { Standing } from '../models/standing';
 import { StandingsBuilder } from './standings-builder';
 import { MatchSelection } from '../models/standings-filter';
-import { MOCK_FIXTURES } from '../test/fixture-dto.mock';
+import { MOCK_MATCHES } from '../test/match-dto.mock';
 
 describe('StandingsBuilder', () => {
 
@@ -16,7 +16,7 @@ describe('StandingsBuilder', () => {
         let builder: StandingsBuilder;
         const finalStandings = (team: string): Standing | undefined => builder.finalStandings.find(s => s.teamName === team);
         beforeEach(() => {
-            builder = new StandingsBuilder(MOCK_FIXTURES, new Date(2023, 11, 11), MatchSelection.All);
+            builder = new StandingsBuilder(MOCK_MATCHES, new Date(2023, 11, 11), MatchSelection.All);
         });
 
         it('for Murskaajat', () => {

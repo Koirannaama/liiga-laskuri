@@ -15,10 +15,11 @@ export class StandingsFilterComponent {
     @Output() public matchSelectionSelect = new EventEmitter<MatchSelection>();
 
     public readonly seasonOptions: { [season in Season]: string } = {
-        '2020': '2020 - 2021',
-        '2021': '2021 - 2022',
-        '2022': '2022 - 2023',
-        '2023': '2023 - 2024'
+        '2020': '2019 - 2020',
+        '2021': '2020 - 2021',
+        '2022': '2021 - 2022',
+        '2023': '2022 - 2023',
+        '2024': '2023 - 2024'
     };
 
     public MatchSelection = MatchSelection;

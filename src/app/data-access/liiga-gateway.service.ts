@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FixtureDTO } from './models/fixture-dto';
 import { Season } from './models/season';
+import { MatchDTO } from './models/match-dto';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,7 @@ export class LiigaGatewayService {
 
     constructor(private _http: HttpClient) { }
 
-    public fetchSchedule(season: Season): Observable<FixtureDTO[]> {
-        return this._http.get<FixtureDTO[]>(`https://www.liiga.fi/api/v1/schedule/${season}/runkosarja`);
+    public fetchMatches(season: Season): Observable<MatchDTO[]> {
+        return this._http.get<MatchDTO[]>(`https://liiga.fi/api/v1/games?tournament=runkosarja&season=${season}`);
     }
 }
