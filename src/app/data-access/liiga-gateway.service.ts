@@ -12,6 +12,6 @@ export class LiigaGatewayService {
     constructor(private _http: HttpClient) { }
 
     public fetchMatches(season: Season): Observable<MatchDTO[]> {
-        return this._http.get<MatchDTO[]>(`https://liiga.fi/api/v1/games?tournament=runkosarja&season=${season}`);
+        return this._http.get<MatchDTO[]>(`/api/v2/games?tournament=runkosarja&season=${season}`);
     }
 }

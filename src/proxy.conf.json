@@ -1,0 +1,8 @@
+{
+    "/": {
+        "target": "https://liiga.fi",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}
