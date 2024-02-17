@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@import '../../../styles/theme.scss';
+
+$main-palette: map.get($colors, 'primary');
+
+:host {
+    display: flex;
+    padding: 1rem 2rem;
+    background-color: #191924;
+
+    a {
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        margin-right: 2rem;
+
+        &.active {
+            color: mat.get-color-from-palette($main-palette, 200);
+        }
+    }
+}
