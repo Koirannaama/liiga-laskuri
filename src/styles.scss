@@ -1,9 +1,12 @@
 @use '@angular/material' as mat;
+@use 'sass:map';
 @import 'styles/palette.scss';
 @import 'styles/theme.scss';
 
 @include mat.core();
 @include mat.all-component-themes($theme);
+
+$main-palette: map.get($colors, 'primary');
 
 html,
 body {
@@ -27,4 +30,23 @@ app-root {
     display: flex;
     flex-direction: column;
     height: 100vh;
+}
+
+.view-component {
+    display: flex;
+    flex: 1;
+
+    > * {
+        padding: 2rem;
+    }
+
+    .content {
+        background-color: rgba(mat.get-color-from-palette($main-palette, '700-contrast'), 0.9);
+        flex: 1;
+    }
+
+    .sidebar {
+        background: linear-gradient(180deg, #373146 0%, mat.get-color-from-palette($main-palette, '100-contrast') 50%);
+        flex: 0 0 13rem;
+    }
 }

@@ -6,23 +6,8 @@ $main-palette: map.get($colors, 'primary');
 
 :host {
     position: relative;
-    display: flex;
-    //height: 100%;
-    flex: 1;
-
-    > * {
-        padding: 2rem;
-    }
-
-    .content {
-        background-color: rgba(mat.get-color-from-palette($main-palette, '700-contrast'), 0.9);
-        flex: 1;
-    }
 
     .sidebar {
-        background: linear-gradient(180deg, #373146 0%, mat.get-color-from-palette($main-palette, '100-contrast') 50%);
-        flex: 0 0 13rem;
-
         mat-button-toggle-group {
             margin-top: 3rem;
             width: 100%;
