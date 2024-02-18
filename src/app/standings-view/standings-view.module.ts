@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SeasonSelectorComponent } from '../core/season-selector/season-selector.component';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatSortModule,
         MatProgressSpinnerModule,
         NgChartsModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        SeasonSelectorComponent,
     ],
     providers: [
         { provide: DateAdapter, useClass: FinDateAdapter },

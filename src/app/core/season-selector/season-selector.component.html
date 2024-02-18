@@ -1,0 +1,7 @@
+<mat-form-field class="dropdown">
+    <mat-select [value]="season" (valueChange)="seasonChange.emit($event)">
+        <mat-option *ngFor="let element of seasonOptions | keyvalue" [value]="element.key">
+            {{ element.value }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

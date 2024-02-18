@@ -1,13 +1,7 @@
 <ng-container *ngIf="filterState">
     <div class="filter-container">
         <label class="filter-label">Kausi</label>
-        <mat-form-field class="dropdown">
-            <mat-select [value]="filterState.season" (valueChange)="selectSeason($event)">
-                <mat-option *ngFor="let element of seasonOptions | keyvalue" [value]="element.key">
-                    {{ element.value }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+        <app-season-selector [season]="filterState.season" (seasonChange)="selectSeason($event)"></app-season-selector>
     </div>
     <div class="filter-container">
         <label class="filter-label">Tilanne päivänä</label>
