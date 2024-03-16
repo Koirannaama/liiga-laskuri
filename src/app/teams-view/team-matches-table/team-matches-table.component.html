@@ -1,0 +1,29 @@
+<table class="table" mat-table [dataSource]="dataSource">
+    <ng-container [matColumnDef]="MatchColumn.MatchUp">
+        <th mat-header-cell *matHeaderCellDef>Ottelu</th>
+        <td mat-cell *matCellDef="let match">{{ match.homeTeam }} - {{ match.awayTeam }}</td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="MatchColumn.Date">
+        <th mat-header-cell *matHeaderCellDef>Päivä</th>
+        <td mat-cell *matCellDef="let match">{{ match.date.toFormat('d.M.y') }}</td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="MatchColumn.Result">
+        <th mat-header-cell *matHeaderCellDef>Tulos</th>
+        <td mat-cell *matCellDef="let match">{{ match.result }}</td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="MatchColumn.ExpectedGoals">
+        <th mat-header-cell *matHeaderCellDef>xG</th>
+        <td mat-cell *matCellDef="let match">{{ match.homeXG }} - {{ match.awayXG }}</td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="MatchColumn.Attendance">
+        <th mat-header-cell *matHeaderCellDef>Yleisö</th>
+        <td mat-cell *matCellDef="let match">{{ match.attendance }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let standing; columns: columns"></tr>
+</table>
