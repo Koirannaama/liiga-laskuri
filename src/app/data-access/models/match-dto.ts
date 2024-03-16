@@ -12,4 +12,5 @@ export interface MatchDTO {
     homeTeam: TeamStatisticsDTO;
     awayTeam: TeamStatisticsDTO;
     ended: boolean;
+    spectators: number;
 }
