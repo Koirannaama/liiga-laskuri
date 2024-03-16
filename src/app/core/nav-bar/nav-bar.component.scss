@@ -7,7 +7,7 @@ $main-palette: map.get($colors, 'primary');
 :host {
     display: flex;
     padding: 1rem 2rem;
-    background-color: #191924;
+    background-color: mat.get-color-from-palette($main-palette, '200-contrast');
 
     a {
         color: white;

@@ -22,6 +22,7 @@ $main-palette: map.get($colors, 'primary');
     .mat-mdc-form-field-infix {
         padding: 0;
         min-height: 0;
+        width: unset;
     }
 
     .mat-mdc-form-field-flex {
@@ -29,6 +30,10 @@ $main-palette: map.get($colors, 'primary');
         padding-left: 1rem;
         border: none;
         height: 100%;
+    }
+
+    .mat-mdc-form-field-icon-suffix {
+        padding: 0;
     }
 
     .mat-mdc-text-field-wrapper {
@@ -63,7 +68,7 @@ $main-palette: map.get($colors, 'primary');
         gap: 2px;
     
         .mat-button-toggle {
-            flex: auto;
+            flex: 1;
             font-weight: 700;
             border: none;
             border-bottom: solid 4px mat.get-color-from-palette($main-palette, '400-contrast');

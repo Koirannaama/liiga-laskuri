@@ -1,1 +1,25 @@
-<p>teams-view works!</p>
+<ng-container *ngIf="stateService.currentState | async as state">
+    <div class="sidebar filter-bar">
+        <div class="filter-container">
+            <label class="filter-label">Kausi</label>
+            <app-season-selector [season]="stateService.initialSeason"></app-season-selector>
+        </div>
+        <div class="filter-container">
+            <label class="filter-label">Joukkue</label>
+            <mat-form-field class="dropdown">
+                <mat-select (selectionChange)="selectTeam($event.value)" [value]="state.selectedTeam">
+                    <mat-option *ngFor="let team of state.teams" [value]="team">
+                        {{ team }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="content">
+        <h2 [class.team-header]="!!state.selectedTeam">{{ state.selectedTeam || 'Valitse joukkue' }}</h2>
+        <div *ngFor="let opponentMatches of state.teamMatches">
+            <h3>{{ opponentMatches[0] }}</h3>
+            <app-team-matches-table [matches]="opponentMatches[1]"></app-team-matches-table>
+        </div>
+    </div>
+</ng-container>

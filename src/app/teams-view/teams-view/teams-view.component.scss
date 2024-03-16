@@ -1,0 +1,16 @@
+mat-form-field {
+    width: 100%;
+}
+
+h2 {
+    color: rgba(black, 0.6);
+    text-align: center;
+    margin: 0;
+    padding-bottom: 1rem;
+
+    &.team-header {
+        color: black;
+        text-align: left;
+        border-bottom: 1px solid rgba(black, 0.4);
+    }
+}

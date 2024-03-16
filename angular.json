@@ -29,7 +29,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/styles/material-styles.scss"
+              "src/styles/material-styles.scss",
+              "src/styles/tables.scss"
             ],
             "scripts": []
           },
