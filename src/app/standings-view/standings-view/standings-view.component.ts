@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { Season } from 'src/app/data-access/models/season';
 import { StandingsStateService } from '../services/standings-state.service';
 import { MatchSelection } from '../models/standings-filter';
@@ -7,9 +7,10 @@ import { MatchSelection } from '../models/standings-filter';
     selector: 'app-standings-view',
     templateUrl: './standings-view.component.html',
     styleUrls: ['./standings-view.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StandingsViewComponent {
+    @HostBinding('class') public class = 'view-component';
 
     public mode: 'table' | 'graph' = 'table';
 

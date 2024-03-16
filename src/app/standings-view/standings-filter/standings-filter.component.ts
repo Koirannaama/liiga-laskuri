@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { Season } from 'src/app/data-access/models/season';
 import { MatchSelection, StandingsFilter } from '../models/standings-filter';
 
@@ -8,7 +8,7 @@ import { MatchSelection, StandingsFilter } from '../models/standings-filter';
     styleUrls: ['./standings-filter.component.scss']
 })
 export class StandingsFilterComponent {
-
+    @HostBinding('class') public class = 'filter-bar'; 
     @Input() public filterState?: StandingsFilter;
     @Output() public cutOffDateSelect = new EventEmitter<Date>();
     @Output() public seasonSelect = new EventEmitter<Season>();
