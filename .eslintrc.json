@@ -84,6 +84,11 @@
                 "prefer-const": ["error", {
                     "destructuring": "all",
                     "ignoreReadBeforeAssign": false
+                }],
+                "comma-dangle": ["error", {
+                    "arrays": "always-multiline",
+                    "objects": "always-multiline",
+                    "functions": "only-multiline"
                 }]
             }
         },
