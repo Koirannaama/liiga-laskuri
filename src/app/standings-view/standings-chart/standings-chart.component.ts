@@ -8,7 +8,7 @@ import teamColor from './team-colors';
 @Component({
     selector: 'app-standings-chart',
     templateUrl: './standings-chart.component.html',
-    styleUrls: ['./standings-chart.component.scss']
+    styleUrls: ['./standings-chart.component.scss'],
 })
 export class StandingsChartComponent {
 
@@ -23,9 +23,9 @@ export class StandingsChartComponent {
                     borderColor: teamColor(entry[0]),
                     pointBackgroundColor: teamColor(entry[0]),
                     pointBorderColor: teamColor(entry[0]),
-                    backgroundColor: teamColor(entry[0])
+                    backgroundColor: teamColor(entry[0]),
                 })
-            )
+            ),
         };
     }
     public lineChartData?: ChartData<'line', { x: DateTime, y: number }[]>;
@@ -36,9 +36,9 @@ export class StandingsChartComponent {
             x: {
                 type: 'time',
                 time: {
-                    tooltipFormat: 'dd.MM.yyyy'
-                }
-            }
-        }
+                    tooltipFormat: 'dd.MM.yyyy',
+                },
+            },
+        },
     } as const;
 }

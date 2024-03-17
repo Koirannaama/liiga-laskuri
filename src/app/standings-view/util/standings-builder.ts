@@ -71,7 +71,7 @@ export class StandingsBuilder {
             pointsPerGame: totalPoints / totalGamesPlayed,
             xGFor,
             xGAgainst,
-            xGDiff
+            xGDiff,
         };
     }
 
@@ -98,7 +98,7 @@ export class StandingsBuilder {
         const homePoints = isHomeWin ? winnerPoints : fullPoints - winnerPoints;
         return {
             [match.homeTeam.teamName]: homePoints,
-            [match.awayTeam.teamName]: fullPoints - homePoints
+            [match.awayTeam.teamName]: fullPoints - homePoints,
         };
     }
 

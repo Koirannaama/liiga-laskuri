@@ -22,7 +22,7 @@ import { SeasonSelectorComponent } from '../core/season-selector/season-selector
         StandingsViewComponent,
         StandingsTableComponent,
         StandingsFilterComponent,
-        StandingsChartComponent
+        StandingsChartComponent,
     ],
     imports: [
         CommonModule,
@@ -51,10 +51,10 @@ import { SeasonSelectorComponent } from '../core/season-selector/season-selector
                 dateA11yLabel: 'LL',
                 monthYearA11yLabel: 'YYYY',
               },
-        } }
+        } },
     ],
     exports: [
-        StandingsViewComponent
-    ]
+        StandingsViewComponent,
+    ],
 })
 export class StandingsViewModule { }

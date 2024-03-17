@@ -5,7 +5,7 @@ import { MatchSelection, StandingsFilter } from '../models/standings-filter';
 @Component({
     selector: 'app-standings-filter',
     templateUrl: './standings-filter.component.html',
-    styleUrls: ['./standings-filter.component.scss']
+    styleUrls: ['./standings-filter.component.scss'],
 })
 export class StandingsFilterComponent {
     @HostBinding('class') public class = 'filter-bar'; 
@@ -19,7 +19,7 @@ export class StandingsFilterComponent {
         '2021': '2020 - 2021',
         '2022': '2021 - 2022',
         '2023': '2022 - 2023',
-        '2024': '2023 - 2024'
+        '2024': '2023 - 2024',
     };
 
     public MatchSelection = MatchSelection;

@@ -15,7 +15,7 @@ import { Season } from 'src/app/data-access/models/season';
         MatFormFieldModule,
         MatSelectModule,
         MatOptionModule,
-    ]
+    ],
 })
 export class SeasonSelectorComponent {
     @Input() public season?: Season;
@@ -26,6 +26,6 @@ export class SeasonSelectorComponent {
         '2021': '2020 - 2021',
         '2022': '2021 - 2022',
         '2023': '2022 - 2023',
-        '2024': '2023 - 2024'
+        '2024': '2023 - 2024',
     };
 }

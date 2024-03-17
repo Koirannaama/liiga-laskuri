@@ -13,7 +13,7 @@ const TEAM_COLORS: { [ teamName: string ]: string } = {
     'sport': '#da0612',
     'jyp': '#AB1933',
     'saipa': '#f7e900',
-    'jukurit': '#00477b'
+    'jukurit': '#00477b',
 
 } as const;
 

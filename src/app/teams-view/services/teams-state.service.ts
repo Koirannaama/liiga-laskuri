@@ -8,7 +8,7 @@ import { MatchDTO } from 'src/app/data-access/models/match-dto';
 import { Match } from '../models/match';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class TeamsStateService {
 
@@ -51,7 +51,7 @@ export class TeamsStateService {
         return {
             teamMatches: [...teamMatches.entries()].sort((a, b) => a[0].localeCompare(b[0])),
             teams: [...teams].sort((a, b) => a.localeCompare(b)),
-            selectedTeam: team
+            selectedTeam: team,
         };
     }
 }

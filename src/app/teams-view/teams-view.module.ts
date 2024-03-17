@@ -23,6 +23,6 @@ import { MatTableModule } from '@angular/material/table';
     ],
     exports: [
         TeamsViewComponent,
-    ]
+    ],
 })
 export class TeamsViewModule { }

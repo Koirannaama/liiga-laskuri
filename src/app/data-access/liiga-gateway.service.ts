@@ -5,7 +5,7 @@ import { Season } from './models/season';
 import { MatchDTO } from './models/match-dto';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class LiigaGatewayService {
 

@@ -20,7 +20,7 @@ enum StandingsColumn {
     selector: 'app-standings-table',
     templateUrl: './standings-table.component.html',
     styleUrls: ['./standings-table.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StandingsTableComponent implements AfterViewInit {
     @ViewChild(MatSort) public sort?: MatSort;

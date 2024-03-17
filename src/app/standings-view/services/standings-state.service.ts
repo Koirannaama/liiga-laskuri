@@ -8,7 +8,7 @@ import { StandingsBuilder } from '../util/standings-builder';
 import { MatchDTO } from 'src/app/data-access/models/match-dto';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class StandingsStateService {
 
@@ -45,8 +45,8 @@ export class StandingsStateService {
                     end: dates.end,
                     cutOff,
                     season,
-                    matchSelection
-                }
+                    matchSelection,
+                },
             }))
         );
         this.isLoading = merge(

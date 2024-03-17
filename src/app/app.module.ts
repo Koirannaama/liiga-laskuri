@@ -19,9 +19,9 @@ import { TeamsViewModule } from './teams-view/teams-view.module';
         BrowserAnimationsModule,
         AppRoutingModule,
         NavBarComponent,
-        TeamsViewModule
+        TeamsViewModule,
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 export class AppModule { }
