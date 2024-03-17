@@ -12,8 +12,8 @@ describe('StandingsStateService', () => {
         TestBed.configureTestingModule({
             providers: [
                 StandingsStateService,
-                { provide: LiigaGatewayService, useValue: { fetchMatches: () => of(MOCK_MATCHES) } }
-            ]
+                { provide: LiigaGatewayService, useValue: { fetchMatches: () => of(MOCK_MATCHES) } },
+            ],
         });
         service = TestBed.inject(StandingsStateService);
     });

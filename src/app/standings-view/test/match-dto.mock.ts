@@ -7,14 +7,15 @@ export const MOCK_MATCHES: MatchDTO[] = [
         homeTeam: {
             teamName: 'Murskaajat',
             goals: 3,
-            expectedGoals: 0,
+            expectedGoals: 1.20,
         },
         awayTeam: {
             teamName: 'Myllyttäjät',
             goals: 2,
-            expectedGoals: 0,
+            expectedGoals: 2.45,
         },
         ended: true,
+        spectators: 1234,
     },
     {
         start: new Date(2023, 7, 5).toISOString(),
@@ -30,6 +31,7 @@ export const MOCK_MATCHES: MatchDTO[] = [
             expectedGoals: 0,
         },
         ended: true,
+        spectators: 1234,
     },
     {
         start: new Date(2023, 7, 6).toISOString(),
@@ -45,6 +47,7 @@ export const MOCK_MATCHES: MatchDTO[] = [
             expectedGoals: 0,
         },
         ended: true,
+        spectators: 1234,
     },
     {
         start: new Date(2023, 7, 7).toISOString(),
@@ -60,5 +63,6 @@ export const MOCK_MATCHES: MatchDTO[] = [
             expectedGoals: 0,
         },
         ended: true,
+        spectators: 1234,
     },
 ];
