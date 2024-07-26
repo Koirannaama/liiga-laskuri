@@ -74,10 +74,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "liiga-laskuri:build:production"
+              "buildTarget": "liiga-laskuri:build:production"
             },
             "development": {
-              "browserTarget": "liiga-laskuri:build:development"
+              "buildTarget": "liiga-laskuri:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +85,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "liiga-laskuri:build"
+            "buildTarget": "liiga-laskuri:build"
           }
         },
         "test": {
