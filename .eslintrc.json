@@ -3,6 +3,10 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
+  "plugins": [
+    "@angular-eslint",
+    "@typescript-eslint"
+  ],
   "overrides": [
     {
       "files": [

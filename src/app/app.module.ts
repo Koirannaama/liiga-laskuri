@@ -26,7 +26,7 @@ import { MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS } from '@angular/material/button-togg
         {
             provide: MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS,
             useValue: { hideMultipleSelectionIndicator: true, hideSingleSelectionIndicator: true },
-        }
+        },
     ],
     bootstrap: [AppComponent],
 })

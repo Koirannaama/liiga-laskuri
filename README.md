@@ -9,3 +9,7 @@
 ## Testien ajaminen
 
 `npm run test`
+
+## Lint
+
+`ng lint`
