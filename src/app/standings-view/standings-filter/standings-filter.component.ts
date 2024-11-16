@@ -20,6 +20,7 @@ export class StandingsFilterComponent {
         '2022': '2021 - 2022',
         '2023': '2022 - 2023',
         '2024': '2023 - 2024',
+        '2025': '2024 - 2025',
     };
 
     public MatchSelection = MatchSelection;

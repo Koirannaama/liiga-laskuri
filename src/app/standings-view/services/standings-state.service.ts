@@ -17,7 +17,7 @@ export class StandingsStateService {
     public readonly hasData: Observable<boolean>;
 
     private readonly _cutoffDate = new Subject<Date>();
-    private readonly _season = new BehaviorSubject<Season>('2024');
+    private readonly _season = new BehaviorSubject<Season>('2025');
     private readonly _matchSelection = new BehaviorSubject<MatchSelection>(MatchSelection.All);
 
     constructor(private _liigaData: LiigaGatewayService) {
