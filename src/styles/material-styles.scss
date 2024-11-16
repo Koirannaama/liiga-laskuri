@@ -77,6 +77,7 @@ $main-palette: map.get($colors, 'primary');
                 background-color: mat.get-color-from-palette($main-palette, 500);
                 color: white;
                 border-bottom: solid 4px rgba(mat.get-color-from-palette($main-palette, 900), 0.5);
+                border-left: none;
             }
 
             .mat-button-toggle-label-content {
