@@ -7,11 +7,11 @@ $main-palette: map.get($colors, 'primary');
 @mixin form-field() {
     padding: 0;
     color: black;
-    border-bottom: solid 4px mat.get-color-from-palette($main-palette, '400-contrast');
+    border-bottom: solid 4px mat.m2-get-color-from-palette($main-palette, '400-contrast');
 
     &.mat-mdc-form-field {
         height: 2.5rem;
-        background: mat.get-color-from-palette($main-palette, '500-contrast');
+        background: mat.m2-get-color-from-palette($main-palette, '500-contrast');
         padding: 0;
         align-items: center;
         border-radius: 0;
@@ -71,12 +71,12 @@ $main-palette: map.get($colors, 'primary');
             flex: 1;
             font-weight: 700;
             border: none;
-            border-bottom: solid 4px mat.get-color-from-palette($main-palette, '400-contrast');
+            border-bottom: solid 4px mat.m2-get-color-from-palette($main-palette, '400-contrast');
 
             &.mat-button-toggle-checked {
-                background-color: mat.get-color-from-palette($main-palette, 500);
+                background-color: mat.m2-get-color-from-palette($main-palette, 500);
                 color: white;
-                border-bottom: solid 4px rgba(mat.get-color-from-palette($main-palette, 900), 0.5);
+                border-bottom: solid 4px rgba(mat.m2-get-color-from-palette($main-palette, 900), 0.5);
                 border-left: none;
             }
 
@@ -93,11 +93,11 @@ $main-palette: map.get($colors, 'primary');
 
 .mdc-menu-surface.mat-mdc-select-panel.mdc-menu-surface--open {
     padding: 0;
-    border: 1px solid mat.get-color-from-palette($main-palette, '400-contrast');;
+    border: 1px solid mat.m2-get-color-from-palette($main-palette, '400-contrast');;
 
     .mat-mdc-option {
         font-size: 0.875rem;
-        background-color: mat.get-color-from-palette($main-palette, '500-contrast');
+        background-color: mat.m2-get-color-from-palette($main-palette, '500-contrast');
         min-height: 2rem;
     }
 }

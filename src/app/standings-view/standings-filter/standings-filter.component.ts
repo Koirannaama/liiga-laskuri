@@ -14,15 +14,6 @@ export class StandingsFilterComponent {
     @Output() public seasonSelect = new EventEmitter<Season>();
     @Output() public matchSelectionSelect = new EventEmitter<MatchSelection>();
 
-    public readonly seasonOptions: { [season in Season]: string } = {
-        '2020': '2019 - 2020',
-        '2021': '2020 - 2021',
-        '2022': '2021 - 2022',
-        '2023': '2022 - 2023',
-        '2024': '2023 - 2024',
-        '2025': '2024 - 2025',
-    };
-
     public MatchSelection = MatchSelection;
 
     public selectCutOffDate(date: Date | null): void {

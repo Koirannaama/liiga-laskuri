@@ -41,12 +41,12 @@ app-root {
     }
 
     .content {
-        background-color: rgba(mat.get-color-from-palette($main-palette, '700-contrast'), 0.9);
+        background-color: rgba(mat.m2-get-color-from-palette($main-palette, '700-contrast'), 0.9);
         flex: 1;
     }
 
     .sidebar {
-        background: linear-gradient(180deg, #373146 0%, mat.get-color-from-palette($main-palette, '100-contrast') 50%);
+        background: linear-gradient(180deg, #373146 0%, mat.m2-get-color-from-palette($main-palette, '100-contrast') 50%);
         flex: 0 0 13rem;
     }
 }

@@ -18,7 +18,7 @@ $main-palette: map.get($colors, 'primary');
 }
 
 .chart {
-    background-color: mat.get-color-from-palette($main-palette, '900-contrast');
+    background-color: mat.m2-get-color-from-palette($main-palette, '900-contrast');
     box-shadow: 0px 0px 8px rgba(black, 0.35);
     padding: 1rem;
 }

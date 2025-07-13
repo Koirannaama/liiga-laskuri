@@ -3,11 +3,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
-    "module": "CommonJs",
     "types": [
       "jest"
     ],
-    "target": "ES2016" // Required for tests using component harnesses to work reliably
+    "target": "es2022"
   },
   "include": [
     "src/**/*.spec.ts",

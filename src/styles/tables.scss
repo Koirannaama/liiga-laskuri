@@ -14,7 +14,7 @@ table.table {
     }
 
     tr.mat-mdc-header-row {
-        background-color: rgba(mat.get-color-from-palette($main-palette, 500), 0.75);
+        background-color: rgba(mat.m2-get-color-from-palette($main-palette, 500), 0.75);
 
         th.mat-mdc-header-cell {
             color: white;
@@ -24,7 +24,7 @@ table.table {
     }
 
     tr.mat-mdc-row {
-        background-color: mat.get-color-from-palette($main-palette, '900-contrast') !important;
+        background-color: mat.m2-get-color-from-palette($main-palette, '900-contrast') !important;
 
         td.mat-mdc-cell {
             border-bottom: 1px solid rgba(black, 0.1);
