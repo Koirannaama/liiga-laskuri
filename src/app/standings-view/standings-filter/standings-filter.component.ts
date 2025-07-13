@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { Season } from 'src/app/data-access/models/season';
 import { MatchSelection, StandingsFilter } from '../models/standings-filter';
 
@@ -6,6 +6,7 @@ import { MatchSelection, StandingsFilter } from '../models/standings-filter';
     selector: 'app-standings-filter',
     templateUrl: './standings-filter.component.html',
     styleUrls: ['./standings-filter.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StandingsFilterComponent {
     @HostBinding('class') public class = 'filter-bar'; 

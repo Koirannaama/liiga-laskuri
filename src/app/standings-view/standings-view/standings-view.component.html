@@ -1,31 +1,24 @@
-<ng-container *ngIf="standingsState.state | async as state">
-    <div class="sidebar">
-        <app-standings-filter
-            [filterState]="state.filter"
-            (cutOffDateSelect)="filterByDate($event)"
-            (seasonSelect)="changeSeason($event)"
-            (matchSelectionSelect)="changeMatchSelection($event)">
-        </app-standings-filter>
+@let state = standingsState.state | async;
+<div class="sidebar">
+    <app-standings-filter
+        [filterState]="state?.filter"
+        (cutOffDateSelect)="filterByDate($event)"
+        (seasonSelect)="changeSeason($event)"
+        (matchSelectionSelect)="changeMatchSelection($event)">
+    </app-standings-filter>
 
-        <mat-button-toggle-group class="toggle-button-group" [(value)]="mode">
-            <mat-button-toggle value="table">Taulukko</mat-button-toggle>
-            <mat-button-toggle value="graph">Kuvaaja</mat-button-toggle>
-        </mat-button-toggle-group>
-    </div>
-    <div class="content">
-        <ng-container *ngIf="standingsState.hasData | async; else noData">
-            <app-standings-table *ngIf="mode === 'table'" [standings]="state.standings"></app-standings-table>
-            <app-standings-chart *ngIf="mode === 'graph'" [dailyStandings]="state.dailyStandings"></app-standings-chart>
-        </ng-container>
-    </div>
-
-    <ng-template #noData>
-        Valitulle kaudelle ei löytynyt tietoja.
-    </ng-template>
-</ng-container>
-
-<div *ngIf="standingsState.isLoading | async" class="spinner-container">
-    <mat-spinner></mat-spinner>
+    <mat-button-toggle-group class="toggle-button-group" [(value)]="mode">
+        <mat-button-toggle value="table">Taulukko</mat-button-toggle>
+        <mat-button-toggle value="graph">Kuvaaja</mat-button-toggle>
+    </mat-button-toggle-group>
 </div>
-
-
+<div class="content">
+    @if (standingsState.isLoading | async) {
+        <mat-spinner></mat-spinner>
+    } @else if ((standingsState.hasData | async) === false) {
+        Valitulle kaudelle ei löytynyt tietoja.
+    } @else if (state) {
+        <app-standings-table *ngIf="mode === 'table'" [standings]="state.standings"></app-standings-table>
+        <app-standings-chart *ngIf="mode === 'graph'" [dailyStandings]="state.dailyStandings"></app-standings-chart>
+    }
+</div>

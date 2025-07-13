@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { TeamMatchesTableComponent } from './team-matches-table/team-matches-table.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import { MatTableModule } from '@angular/material/table';
         MatOptionModule,
         SeasonSelectorComponent,
         MatTableModule,
+        MatProgressSpinnerModule,
     ],
     exports: [
         TeamsViewComponent,

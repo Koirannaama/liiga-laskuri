@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, combineLatest } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, merge } from 'rxjs';
 import { map, shareReplay, switchMap } from 'rxjs/operators';
 import { LiigaGatewayService } from 'src/app/data-access/liiga-gateway.service';
 import { TeamsState } from '../models/teams-state';
@@ -12,6 +12,7 @@ import { Match } from '../models/match';
 })
 export class TeamsStateService {
 
+    public readonly loading: Observable<boolean>;
     public readonly currentState: Observable<TeamsState>;
     public readonly initialSeason: Season = '2024';
 
@@ -26,10 +27,18 @@ export class TeamsStateService {
         this.currentState = combineLatest([matches, this._selectedTeam]).pipe(
             map((data) => this.createState(...data))
         );
+        this.loading = merge(
+            this._season.pipe(map(() => true)),
+            matches.pipe(map(() => false)),
+        );
     }
 
     public setTeam(team: string): void {
         this._selectedTeam.next(team);
+    }
+
+    public setSeason(season: Season): void {
+        this._season.next(season);
     }
 
     private createState(matches: MatchDTO[], team: string): TeamsState {
@@ -37,7 +46,7 @@ export class TeamsStateService {
         const teams = matches.reduce(
             (allTeams, match) => allTeams.add(match.homeTeam.teamName).add(match.awayTeam.teamName),
             new Set<string>());
-        const teamMatches =  matches.reduce((allTeamMatches, match) => {
+        const teamMatches = matches.reduce((allTeamMatches, match) => {
             const isTeamMatch = match.homeTeam.teamName === team || match.awayTeam.teamName === team;
             if (!isTeamMatch || !match.ended) {
                 return allTeamMatches;
