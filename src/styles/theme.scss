@@ -1,5 +1,5 @@
 @use '@angular/material' as mat;
-@import './palette.scss';
+@use './palette.scss' as *;
 
 $liiga-laskuri-primary: mat.m2-define-palette($palette);
 $theme: mat.m2-define-light-theme((color: (

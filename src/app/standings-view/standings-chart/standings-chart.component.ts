@@ -9,6 +9,7 @@ import teamColor from './team-colors';
     selector: 'app-standings-chart',
     templateUrl: './standings-chart.component.html',
     styleUrls: ['./standings-chart.component.scss'],
+    standalone: false,
 })
 export class StandingsChartComponent {
 

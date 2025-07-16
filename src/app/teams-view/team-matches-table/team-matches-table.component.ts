@@ -15,6 +15,7 @@ enum MatchColumn {
     templateUrl: './team-matches-table.component.html',
     styleUrls: ['./team-matches-table.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class TeamMatchesTableComponent {
     @Input() public set matches(matches: Match[]) {

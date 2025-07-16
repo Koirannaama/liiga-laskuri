@@ -7,6 +7,7 @@ import { MatchSelection, StandingsFilter } from '../models/standings-filter';
     templateUrl: './standings-filter.component.html',
     styleUrls: ['./standings-filter.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class StandingsFilterComponent {
     @HostBinding('class') public class = 'filter-bar'; 

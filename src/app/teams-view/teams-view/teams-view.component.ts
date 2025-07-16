@@ -7,6 +7,7 @@ import { Season } from 'src/app/data-access/models/season';
     templateUrl: './teams-view.component.html',
     styleUrls: ['./teams-view.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class TeamsViewComponent {
     @HostBinding('class') public class = 'view-component';

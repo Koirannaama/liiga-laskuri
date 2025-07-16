@@ -1,9 +1,10 @@
 @use '@angular/material' as mat;
 @use 'sass:map';
-@import 'styles/palette.scss';
-@import 'styles/theme.scss';
+@use 'styles/palette.scss' as *;
+@use 'styles/theme.scss' as *;
 
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 @include mat.all-component-themes($theme);
 
 $main-palette: map.get($colors, 'primary');

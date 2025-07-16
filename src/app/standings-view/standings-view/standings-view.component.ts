@@ -8,6 +8,7 @@ import { MatchSelection } from '../models/standings-filter';
     templateUrl: './standings-view.component.html',
     styleUrls: ['./standings-view.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class StandingsViewComponent {
     @HostBinding('class') public class = 'view-component';

@@ -21,6 +21,7 @@ enum StandingsColumn {
     templateUrl: './standings-table.component.html',
     styleUrls: ['./standings-table.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class StandingsTableComponent implements AfterViewInit {
     @ViewChild(MatSort) public sort?: MatSort;

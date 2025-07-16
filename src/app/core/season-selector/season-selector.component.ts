@@ -10,7 +10,6 @@ import { Season } from 'src/app/data-access/models/season';
     templateUrl: './season-selector.component.html',
     styleUrls: ['./season-selector.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [
         CommonModule,
         MatFormFieldModule,
