@@ -5,24 +5,23 @@ import { LiigaGatewayService } from 'src/app/data-access/liiga-gateway.service';
 import { Subscription, of } from 'rxjs';
 import { MOCK_MATCHES } from 'src/app/standings-view/test/match-dto.mock';
 import { TeamsState } from '../models/teams-state';
+import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 
 describe('TeamsStateService', () => {
     let service: TeamsStateService;
     let latestState: TeamsState;
-    let stateSubscription: Subscription;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
                 TeamsStateService,
                 { provide: LiigaGatewayService, useValue: { fetchMatches: () => of(MOCK_MATCHES) } },
+                provideExperimentalZonelessChangeDetection(),
             ],
         });
         service = TestBed.inject(TeamsStateService);
         service.currentState.subscribe(state => latestState = state);
     });
-
-    afterEach(() => stateSubscription?.unsubscribe());
 
     it('should create initial state', () => {
         expect(latestState.selectedTeam).toBe('');

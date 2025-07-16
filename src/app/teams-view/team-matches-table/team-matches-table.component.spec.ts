@@ -1,22 +1,26 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { HarnessLoader, parallel } from '@angular/cdk/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { TeamMatchesTableComponent } from './team-matches-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatRowHarness } from '@angular/material/table/testing';
 import { MOCK_MATCHES } from 'src/app/standings-view/test/match-dto.mock';
 import { Match } from '../models/match';
+import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 
 describe('TeamMatchesTableComponent', () => {
     let component: TeamMatchesTableComponent;
     let fixture: ComponentFixture<TeamMatchesTableComponent>;
     let loader: HarnessLoader;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [TeamMatchesTableComponent],
             imports: [
                 MatTableModule,
+            ],
+            providers: [
+                provideExperimentalZonelessChangeDetection(),
             ],
         })
             .compileComponents();
@@ -24,8 +28,7 @@ describe('TeamMatchesTableComponent', () => {
         fixture = TestBed.createComponent(TeamMatchesTableComponent);
         component = fixture.componentInstance;
         loader = TestbedHarnessEnvironment.loader(fixture);
-        fixture.detectChanges();
-    }));
+    });
 
     it('should create match rows', async () => {
         component.matches = MOCK_MATCHES.slice(0, 2).map(dto => new Match(dto));

@@ -4,6 +4,7 @@ import { LiigaGatewayService } from 'src/app/data-access/liiga-gateway.service';
 
 import { StandingsStateService } from './standings-state.service';
 import { MOCK_MATCHES } from '../test/match-dto.mock';
+import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 
 describe('StandingsStateService', () => {
     let service: StandingsStateService;
@@ -13,6 +14,7 @@ describe('StandingsStateService', () => {
             providers: [
                 StandingsStateService,
                 { provide: LiigaGatewayService, useValue: { fetchMatches: () => of(MOCK_MATCHES) } },
+                provideExperimentalZonelessChangeDetection(),
             ],
         });
         service = TestBed.inject(StandingsStateService);

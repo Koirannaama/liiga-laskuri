@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -9,19 +9,28 @@ import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 import { TeamsViewModule } from './teams-view/teams-view.module';
 import { MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS } from '@angular/material/button-toggle';
 
-@NgModule({ declarations: [
+@NgModule({
+    declarations: [
         AppComponent,
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [
+        AppComponent,
+    ],
+    imports: [
+        BrowserModule,
         StandingsViewModule,
         BrowserAnimationsModule,
         AppRoutingModule,
         NavBarComponent,
-        TeamsViewModule], providers: [
+        TeamsViewModule,
+    ],
+    providers: [
         {
             provide: MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS,
             useValue: { hideMultipleSelectionIndicator: true, hideSingleSelectionIndicator: true },
         },
         provideHttpClient(withInterceptorsFromDi()),
-    ] })
+        provideExperimentalZonelessChangeDetection(),
+    ],
+})
 export class AppModule { }

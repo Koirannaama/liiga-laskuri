@@ -29,8 +29,7 @@
     "luxon": "^3.2.1",
     "ng2-charts": "^4.0.1",
     "rxjs": "~7.5.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.1"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.15",
