@@ -101,3 +101,8 @@ $main-palette: map.get($colors, 'primary');
         min-height: 2rem;
     }
 }
+
+mat-sidenav-container {
+    width: 100%;
+    padding: 0;
+}

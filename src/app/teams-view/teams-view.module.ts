@@ -8,6 +8,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { TeamMatchesTableComponent } from './team-matches-table/team-matches-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavToggleComponent } from '../core/sidenav-toggle/sidenav-toggle.component';
+import { SidenavModeDirective } from '../core/sidenav-mode.directive';
 
 @NgModule({
     declarations: [
@@ -22,6 +25,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         SeasonSelectorComponent,
         MatTableModule,
         MatProgressSpinnerModule,
+        MatSidenavModule,
+        SidenavToggleComponent,
+        SidenavModeDirective,
     ],
     exports: [
         TeamsViewComponent,

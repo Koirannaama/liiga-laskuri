@@ -1,24 +1,33 @@
 @let state = standingsState.state | async;
-<div class="sidebar">
-    <app-standings-filter
-        [filterState]="state?.filter"
-        (cutOffDateSelect)="filterByDate($event)"
-        (seasonSelect)="changeSeason($event)"
-        (matchSelectionSelect)="changeMatchSelection($event)">
-    </app-standings-filter>
+@if (sidenav.mode === 'over') {
+    <app-sidenav-toggle [open]="sidenav.opened" (openChange)="sidenav.toggle()"></app-sidenav-toggle>
+}
+<mat-sidenav-container>
+    <mat-sidenav #sidenav opened appSidenavMode>
+        <div class="sidebar">
+            <app-standings-filter
+                [filterState]="state?.filter"
+                (cutOffDateSelect)="filterByDate($event)"
+                (seasonSelect)="changeSeason($event)"
+                (matchSelectionSelect)="changeMatchSelection($event)">
+            </app-standings-filter>
 
-    <mat-button-toggle-group class="toggle-button-group" [(value)]="mode">
-        <mat-button-toggle value="table">Taulukko</mat-button-toggle>
-        <mat-button-toggle value="graph">Kuvaaja</mat-button-toggle>
-    </mat-button-toggle-group>
-</div>
-<div class="content">
-    @if (standingsState.isLoading | async) {
-        <mat-spinner></mat-spinner>
-    } @else if ((standingsState.hasData | async) === false) {
-        Valitulle kaudelle ei löytynyt tietoja.
-    } @else if (state) {
-        <app-standings-table *ngIf="mode === 'table'" [standings]="state.standings"></app-standings-table>
-        <app-standings-chart *ngIf="mode === 'graph'" [dailyStandings]="state.dailyStandings"></app-standings-chart>
-    }
-</div>
+            <mat-button-toggle-group class="toggle-button-group" [(value)]="mode">
+                <mat-button-toggle value="table">Taulukko</mat-button-toggle>
+                <mat-button-toggle value="graph">Kuvaaja</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content">
+            @if (standingsState.isLoading | async) {
+                <mat-spinner></mat-spinner>
+            } @else if ((standingsState.hasData | async) === false) {
+                Valitulle kaudelle ei löytynyt tietoja.
+            } @else if (state) {
+                <app-standings-table *ngIf="mode === 'table'" [standings]="state.standings"></app-standings-table>
+                <app-standings-chart *ngIf="mode === 'graph'" [dailyStandings]="state.dailyStandings"></app-standings-chart>
+            }
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

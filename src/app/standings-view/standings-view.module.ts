@@ -16,6 +16,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SeasonSelectorComponent } from '../core/season-selector/season-selector.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavModeDirective } from '../core/sidenav-mode.directive';
+import { SidenavToggleComponent } from '../core/sidenav-toggle/sidenav-toggle.component';
 
 @NgModule({
     declarations: [
@@ -37,6 +40,9 @@ import { SeasonSelectorComponent } from '../core/season-selector/season-selector
         NgChartsModule,
         MatButtonToggleModule,
         SeasonSelectorComponent,
+        MatSidenavModule,
+        SidenavToggleComponent,
+        SidenavModeDirective,
     ],
     providers: [
         { provide: DateAdapter, useClass: FinDateAdapter },

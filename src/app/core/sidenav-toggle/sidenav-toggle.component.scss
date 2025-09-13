@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@use '../../../styles/theme.scss' as *;
+
+$main-palette: map.get($colors, 'primary');
+
+.sidenav-toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    font-size: 0.875rem;
+    height: 1.75rem;
+    border-radius: 0;
+    border-bottom-right-radius: 2px;
+    --mdc-filled-button-container-color: #{ mat.m2-get-color-from-palette($main-palette, '50-contrast') };
+    --mdc-filled-button-label-text-color: white;
+    padding-inline: 2rem;
+    width: 17rem;
+    opacity: 0.8;
+}
